@@ -50,6 +50,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                             .frame(width: geometry.size.width / 4)
                     }
                 }
+                .fontDesign(.monospaced)
             }
 
             // Buttons
