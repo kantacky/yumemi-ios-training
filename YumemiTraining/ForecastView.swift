@@ -88,6 +88,9 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
         .task {
             self.viewModel.reload()
         }
+        .task {
+            self.viewModel.reload()
+        }
     }
 }
 
