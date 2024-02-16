@@ -6,3 +6,22 @@
 //
 
 import Foundation
+import YumemiWeather
+
+protocol ForecastViewModel: ObservableObject {
+    
+    var weatherCondition: WeatherCondition? { get }
+
+    func reload() -> Void
+}
+
+final class ForecastViewModelImpl: ForecastViewModel {
+    
+    @Published private (set) var weatherCondition: WeatherCondition?
+
+    func reload() {
+        let weatherConditionString: String = YumemiWeather.fetchWeatherCondition()
+
+        self.weatherCondition = .from(string: weatherConditionString)
+    }
+}
