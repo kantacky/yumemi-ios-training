@@ -13,16 +13,22 @@ enum WeatherCondition {
     case cloudy
     case rainy
     
-    var image: Image {
+    var image: some View {
         switch self {
         case .sunny:
-            return .init(.sunny)
+            return Image(.sunny)
+                .resizable()
+                .foregroundStyle(.red)
             
         case .cloudy:
-            return .init(.cloudy)
+            return Image(.cloudy)
+                .resizable()
+                .foregroundStyle(.gray)
             
         case .rainy:
-            return .init(.rainy)
+            return Image(.rainy)
+                .resizable()
+                .foregroundStyle(.blue)
         }
     }
     
