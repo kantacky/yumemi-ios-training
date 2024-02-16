@@ -16,8 +16,8 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
             VStack {
                 // Image
                 Group {
-                    if let weatherCondition = self.viewModel.weatherCondition {
-                        weatherCondition.image
+                    if let weather = self.viewModel.weather {
+                        weather.weatherCondition.image
                             .scaledToFit()
                     } else {
                         Color.gray
@@ -32,21 +32,23 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
 
                 // Labels
                 HStack(spacing: .zero) {
-                    Text("--")
-                        .foregroundStyle(.blue)
-                        .containerRelativeFrame(
-                            .horizontal,
-                            count: 4,
-                            spacing: .zero
-                        )
-
-                    Text("--")
-                        .foregroundStyle(.red)
-                        .containerRelativeFrame(
-                            .horizontal,
-                            count: 4,
-                            spacing: .zero
-                        )
+                    if let weather = self.viewModel.weather {
+                        Text("\(weather.minTemperature)")
+                            .foregroundStyle(.blue)
+                            .frame(width: geometry.size.width / 4)
+                        
+                        Text("\(weather.maxTemperature)")
+                            .foregroundStyle(.red)
+                            .frame(width: geometry.size.width / 4)
+                    } else {
+                        Text("--")
+                            .foregroundStyle(.blue)
+                            .frame(width: geometry.size.width / 4)
+                        
+                        Text("--")
+                            .foregroundStyle(.red)
+                            .frame(width: geometry.size.width / 4)
+                    }
                 }
             }
 
