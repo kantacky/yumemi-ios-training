@@ -88,6 +88,22 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
         .task {
             self.viewModel.reload()
         }
+        .alert(
+            .init("Error"),
+            isPresented: .constant(self.viewModel.alert != nil),
+            actions: {
+                Button {
+                    self.viewModel.dismissAlert()
+                } label: {
+                    Text("OK")
+                }
+            },
+            message: {
+                if let text = self.viewModel.alert {
+                    Text(text)
+                }
+            }
+        )
         .task {
             self.viewModel.reload()
         }
