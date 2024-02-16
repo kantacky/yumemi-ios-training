@@ -36,7 +36,6 @@ struct ForecastView: View {
                         Path { _ in
                             Task {
                                 self.labelHeight = labelGeometry.size.height
-                                print(self.labelHeight)
                             }
                         }
                     }
