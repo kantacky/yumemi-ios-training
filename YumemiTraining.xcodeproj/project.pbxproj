@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */; };
-		F072BB4C2B7F09D400A8E86F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB4B2B7F09D400A8E86F /* ContentView.swift */; };
+		F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB4B2B7F09D400A8E86F /* ForecastView.swift */; };
 		F072BB4E2B7F09D500A8E86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F072BB4D2B7F09D500A8E86F /* Assets.xcassets */; };
 		F072BB512B7F09D500A8E86F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F072BB502B7F09D500A8E86F /* Preview Assets.xcassets */; };
 		F072BB592B7F0A8900A8E86F /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = F072BB582B7F0A8900A8E86F /* YumemiWeather */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		F072BB462B7F09D400A8E86F /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTrainingApp.swift; sourceTree = "<group>"; };
-		F072BB4B2B7F09D400A8E86F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F072BB4B2B7F09D400A8E86F /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		F072BB4D2B7F09D500A8E86F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F072BB502B7F09D500A8E86F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,7 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */,
-				F072BB4B2B7F09D400A8E86F /* ContentView.swift */,
+				F072BB4B2B7F09D400A8E86F /* ForecastView.swift */,
 				F072BB4D2B7F09D500A8E86F /* Assets.xcassets */,
 				F072BB4F2B7F09D500A8E86F /* Preview Content */,
 			);
@@ -145,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F072BB4C2B7F09D400A8E86F /* ContentView.swift in Sources */,
+				F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */,
 				F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

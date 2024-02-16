@@ -11,7 +11,7 @@ import SwiftUI
 struct YumemiTrainingApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ForecastView()
         }
     }
 }
