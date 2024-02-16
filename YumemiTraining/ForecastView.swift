@@ -78,7 +78,6 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 Text(message)
             }
         }
-
     }
 }
 
