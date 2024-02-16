@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ForecastView: View {
+struct ForecastView<ViewModel: ForecastViewModel>: View {
+    @StateObject var viewModel: ViewModel
+    
     @State private var buttonsSize: CGSize = .zero
 
     var body: some View {
@@ -58,7 +60,8 @@ struct ForecastView: View {
                 )
                 
                 Button {
-                    // TODO: Reload Action
+                    // Reload Action
+                    self.viewModel.reload()
                 } label: {
                     Text("Reload")
                 }
@@ -75,9 +78,12 @@ struct ForecastView: View {
             }
         }
         .offset(.init(width: 0, height: (self.buttonsSize.height + 80) / 2))
+        .task {
+            self.viewModel.reload()
+        }
     }
 }
 
 #Preview {
-    ForecastView()
+    ForecastView(viewModel: ForecastViewModelImpl())
 }

@@ -8,6 +8,7 @@
 import Foundation
 import YumemiWeather
 
+@MainActor
 protocol ForecastViewModel: ObservableObject {
     
     var weatherCondition: WeatherCondition? { get }
