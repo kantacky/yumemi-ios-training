@@ -50,13 +50,13 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
             switch error {
             case YumemiWeatherError.invalidParameterError:
-                self.alert = "Area is invalid."
+                self.alert = "Area was invalid."
                 
             case YumemiWeatherError.unknownError:
-                self.alert = "Unknown error has occurred while fetching weather condition."
+                self.alert = "There was an error fetching the weather condition."
                 
             default:
-                self.alert = "Unknown error has occurred while fetching weather condition."
+                self.alert = "There was an error fetching the weather condition."
             }
         }
     }
