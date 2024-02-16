@@ -8,44 +8,40 @@
 import SwiftUI
 
 struct ForecastView: View {
-    @State private var labelHeight: CGFloat = 0
+    @State private var buttonsSize: CGSize = .zero
 
     var body: some View {
-        GeometryReader { geometry in
+        VStack(spacing: .init(80)) {
             VStack {
                 // Image
-                Image("")
-                    .frame(
-                        width: geometry.size.width / 2,
-                        height: geometry.size.width / 2
+                Color.gray
+                    .aspectRatio(1, contentMode: .fit)
+                    .containerRelativeFrame(
+                        .horizontal,
+                        count: 2,
+                        spacing: .zero
                     )
-                    .border(Color.black)
                 
                 // Labels
-                HStack(spacing: 0) {
+                HStack(spacing: .zero) {
                     Text("--")
                         .foregroundStyle(.blue)
-                        .frame(width: geometry.size.width / 4)
+                        .containerRelativeFrame(
+                            .horizontal,
+                            count: 4,
+                            spacing: .zero
+                        )
                     
                     Text("--")
                         .foregroundStyle(.red)
-                        .frame(width: geometry.size.width / 4)
-                }
-                .background {
-                    GeometryReader { labelGeometry in
-                        Path { _ in
-                            Task {
-                                self.labelHeight = labelGeometry.size.height
-                            }
-                        }
-                    }
+                        .containerRelativeFrame(
+                            .horizontal,
+                            count: 4,
+                            spacing: .zero
+                        )
                 }
             }
-            .position(
-                x: geometry.frame(in: .local).midX,
-                y: geometry.frame(in: .local).midY
-            )
-
+            
             // Buttons
             HStack(spacing: 0) {
                 Button {
@@ -53,20 +49,32 @@ struct ForecastView: View {
                 } label: {
                     Text("Close")
                 }
-                .frame(width: geometry.size.width / 4)
+                .containerRelativeFrame(
+                    .horizontal,
+                    count: 4,
+                    span: 1,
+                    spacing: .zero,
+                    alignment: .center
+                )
                 
                 Button {
                     // TODO: Reload Action
                 } label: {
                     Text("Reload")
                 }
-                .frame(width: geometry.size.width / 4)
+                .containerRelativeFrame(
+                    .horizontal,
+                    count: 4,
+                    span: 1,
+                    spacing: .zero,
+                    alignment: .center
+                )
             }
-            .position(
-                x: geometry.frame(in: .local).midX,
-                y: geometry.frame(in: .local).midY + geometry.size.width / 4 + labelHeight + 8 + 80
-            )
+            .readSize { size in
+                self.buttonsSize = size
+            }
         }
+        .offset(.init(width: 0, height: (self.buttonsSize.height + 80) / 2))
     }
 }
 
