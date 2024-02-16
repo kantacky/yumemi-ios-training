@@ -38,7 +38,9 @@ final class ForecastViewModelImpl: ForecastViewModel {
     func reload() {
         self.fetchThrowingWeather(request: .init(area: "tokyo", date: .now))
     }
+}
 
+extension ForecastViewModelImpl {
     private func handleError(_ error: Error) {
         debugPrint(error.localizedDescription)
 
@@ -55,7 +57,9 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
         self.isAlertPresented = true
     }
+}
 
+extension ForecastViewModelImpl {
     private func fetchWeatherCondition() {
         let weatherConditionString: String = YumemiWeather.fetchWeatherCondition()
 
@@ -67,6 +71,21 @@ final class ForecastViewModelImpl: ForecastViewModel {
             let weatherConditionString: String = try YumemiWeather.fetchWeatherCondition(at: area)
 
             self.weatherCondition = .init(rawValue: weatherConditionString)
+        } catch {
+            self.handleError(error)
+        }
+    }
+
+    private func fetchWeather(request: WeatherRequest) {
+        do {
+            let weatherString: String = try YumemiWeather.fetchWeather(request.jsonString ?? "")
+
+            guard let weather: Weather = .from(jsonString: weatherString) else {
+                alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Failed to process server response."))
+                return
+            }
+
+            self.weather = weather
         } catch {
             self.handleError(error)
         }
