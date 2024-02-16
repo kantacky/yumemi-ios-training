@@ -36,7 +36,7 @@ final class ForecastViewModelImpl: ForecastViewModel {
     }
 
     func reload() {
-        self.fetchThrowingWeather(request: .init(area: "tokyo", date: .now))
+        self.fetchWeather(request: .init(area: "tokyo", date: .now))
     }
 }
 
