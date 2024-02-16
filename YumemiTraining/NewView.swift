@@ -16,11 +16,12 @@ struct NewView: View {
                 self.isPresented = true
             }
             .fullScreenCover(isPresented: $isPresented) {
-                self.isPresented = true
-            } content: {
                 ForecastView(
                     viewModel: ForecastViewModelImpl()
                 )
+                .onDisappear {
+                    self.isPresented = true
+                }
             }
     }
 }
