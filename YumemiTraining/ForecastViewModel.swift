@@ -12,7 +12,7 @@ import YumemiWeather
 protocol ForecastViewModel: ObservableObject {
     
     var weatherCondition: WeatherCondition? { get }
-    var alert: String? { get }
+    var errorMessage: String? { get }
 
     func reload() -> Void
     func dismissAlert() -> Void
@@ -22,7 +22,7 @@ protocol ForecastViewModel: ObservableObject {
 final class ForecastViewModelImpl: ForecastViewModel {
     
     @Published private (set) var weatherCondition: WeatherCondition?
-    @Published private (set) var alert: String?
+    @Published private (set) var errorMessage: String?
 
     func reload() {
         self.weatherCondition = nil
@@ -30,7 +30,7 @@ final class ForecastViewModelImpl: ForecastViewModel {
     }
     
     func dismissAlert() {
-        self.alert = nil
+        self.errorMessage = nil
         self.reload()
     }
     
@@ -50,13 +50,13 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
             switch error {
             case YumemiWeatherError.invalidParameterError:
-                self.alert = "Area was invalid."
+                self.errorMessage = "Area was invalid."
                 
             case YumemiWeatherError.unknownError:
-                self.alert = "There was an error fetching the weather condition."
+                self.errorMessage = "There was an error fetching the weather condition."
                 
             default:
-                self.alert = "There was an error fetching the weather condition."
+                self.errorMessage = "There was an error fetching the weather condition."
             }
         }
     }

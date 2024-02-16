@@ -90,7 +90,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
         }
         .alert(
             .init("Error"),
-            isPresented: .constant(self.viewModel.alert != nil),
+            isPresented: .constant(self.viewModel.errorMessage != nil),
             actions: {
                 Button {
                     self.viewModel.dismissAlert()
@@ -99,7 +99,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 }
             },
             message: {
-                if let text = self.viewModel.alert {
+                if let text = self.viewModel.errorMessage {
                     Text(text)
                 }
             }
