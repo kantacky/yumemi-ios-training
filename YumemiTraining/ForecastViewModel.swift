@@ -10,7 +10,7 @@ import YumemiWeather
 
 @MainActor
 protocol ForecastViewModel: ObservableObject {
-
+    var weather: Weather? { get }
     var weatherCondition: WeatherCondition? { get }
     var alertMessage: String? { get }
     var isAlertPresented: Bool { get set }
@@ -20,7 +20,7 @@ protocol ForecastViewModel: ObservableObject {
 
 @MainActor
 final class ForecastViewModelImpl: ForecastViewModel {
-
+    @Published private (set) var weather: Weather?
     @Published private(set) var weatherCondition: WeatherCondition?
     @Published private(set) var alertMessage: String?
     var isAlertPresented: Bool {
@@ -36,7 +36,24 @@ final class ForecastViewModelImpl: ForecastViewModel {
     }
 
     func reload() {
-        self.fetchWeatherCondition(at: "tokyo")
+        self.fetchThrowingWeather(request: .init(area: "tokyo", date: .now))
+    }
+
+    private func handleError(_ error: Error) {
+        debugPrint(error.localizedDescription)
+
+        switch error {
+        case YumemiWeatherError.invalidParameterError:
+            alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Area is invalid."))
+
+        case YumemiWeatherError.unknownError:
+            alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Unknown error has occured."))
+
+        default:
+            alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Unexpected error has occured."))
+        }
+
+        self.isAlertPresented = true
     }
 
     private func fetchWeatherCondition() {
@@ -51,16 +68,7 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
             self.weatherCondition = .init(rawValue: weatherConditionString)
         } catch {
-            switch error {
-            case YumemiWeatherError.invalidParameterError:
-                alertMessage = "Area is invalid."
-
-            case YumemiWeatherError.unknownError:
-                alertMessage = "Unknown error has occured."
-
-            default:
-                alertMessage = "Unexpected error has occured."
-            }
+            self.handleError(error)
         }
     }
 }
