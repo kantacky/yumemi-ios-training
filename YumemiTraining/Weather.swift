@@ -25,7 +25,11 @@ struct Weather: Decodable {
     }
     
     static func from(data: Data) -> Self? {
-        guard let weather: Self = try? JSONDecoder().decode(Weather.self, from: data) else {
+        let decoder: JSONDecoder = .init()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(.iso8601Full)
+        
+        guard let weather: Self = try? decoder.decode(Weather.self, from: data) else {
             return nil
         }
 
@@ -38,16 +42,18 @@ struct WeatherRequest: Encodable {
     var date: Date
     
     var jsonString: String? {
-        let encoder = JSONEncoder()
+        let encoder: JSONEncoder = .init()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        encoder.dateEncodingStrategy = .formatted(.iso8601Full)
         encoder.outputFormatting = .prettyPrinted
 
         guard
-            let data: Data = try? JSONEncoder().encode(self),
+            let data: Data = try? encoder.encode(self),
             let jsonString: String = .init(data: data, encoding: .utf8)
         else {
             return nil
         }
-
+        
         return jsonString
     }
 }
