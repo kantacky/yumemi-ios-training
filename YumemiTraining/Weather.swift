@@ -20,7 +20,6 @@ struct WeatherRequest {
 }
 
 extension WeatherRequest: Encodable {
-
     var jsonString: String? {
         let encoder: JSONEncoder = .init()
         encoder.keyEncodingStrategy = .convertToSnakeCase
@@ -40,8 +39,7 @@ extension WeatherRequest: Encodable {
 
 typealias WeatherResponse = Weather
 
-extension WeatherResponse: Decodable {
-
+extension WeatherResponse {
     init?(jsonString: String) {
         guard
             let data: Data = jsonString.data(using: .utf8),
@@ -64,4 +62,27 @@ extension WeatherResponse: Decodable {
 
         self = weather
     }
+}
+
+extension Weather {
+    static let sunny: Self = .init(
+        date: .now,
+        weatherCondition: .sunny,
+        maxTemperature: 10,
+        minTemperature: -10
+    )
+
+    static let cloudy: Self = .init(
+        date: .now,
+        weatherCondition: .cloudy,
+        maxTemperature: 10,
+        minTemperature: -10
+    )
+
+    static let rainy: Self = .init(
+        date: .now,
+        weatherCondition: .rainy,
+        maxTemperature: 10,
+        minTemperature: -10
+    )
 }

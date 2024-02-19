@@ -8,6 +8,15 @@
         "branch" : "main",
         "revision" : "1b3f2bf61fd0dd1b92f4d0254db49784963a82aa"
       }
+    },
+    {
+      "identity" : "viewinspector",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nalexn/ViewInspector",
+      "state" : {
+        "revision" : "67319287749b83f39dcc2f20edd520c610c012fd",
+        "version" : "0.9.10"
+      }
     }
   ],
   "version" : 2

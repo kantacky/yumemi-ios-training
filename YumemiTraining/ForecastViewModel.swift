@@ -95,31 +95,41 @@ extension ForecastViewModelImpl {
 }
 
 final class ForecastViewModelMock: ForecastViewModel {
+    @Published private(set) var weather: Weather?
+    @Published private(set) var weatherCondition: WeatherCondition?
+    @Published private(set) var alertMessage: String?
+    var isAlertPresented: Bool {
+        get {
+            alertMessage != nil
+        }
 
-    @Published private (set) var weather: Weather?
-    @Published private (set) var errorMessage: String?
+        set(newValue) {
+            if newValue == false {
+                alertMessage = nil
+            }
+        }
+    }
 
     func reload() {
         if let weather = self.weather {
-            self.weather = .init(
-                date: .now,
-                weatherCondition: weather.weatherCondition.next,
-                maxTemperature: 10,
-                minTemperature: -10
-            )
+            switch weather.weatherCondition.next {
+            case .sunny:
+                self.weather = .sunny
+
+            case .cloudy:
+                self.weather = .cloudy
+
+            case .rainy:
+                self.weather = .rainy
+            }
         } else {
-            self.errorMessage = "There was an error fetching the weather."
-            self.weather = .init(
-                date: .now,
-                weatherCondition: .sunny,
-                maxTemperature: 10,
-                minTemperature: -10
-            )
+            self.alertMessage = "There was an error fetching the weather."
+            self.weather = .sunny
         }
     }
 
     func dismissAlert() {
-        self.errorMessage = nil
+        self.alertMessage = nil
         self.reload()
     }
 }
