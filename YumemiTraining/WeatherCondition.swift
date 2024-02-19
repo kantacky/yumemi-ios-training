@@ -33,12 +33,7 @@ enum WeatherCondition: String, Decodable, CaseIterable {
     }
 
     var next: Self {
-        guard let index = Self.allCases.firstIndex(of: self) else {
-            return .sunny
-        }
-        if index >= Self.allCases.count - 1 {
-            return .sunny
-        }
-        return Self.allCases[index + 1]
+        var iterator = Self.allCases.makeIterator()
+        return iterator.next() ?? .sunny
     }
 }
