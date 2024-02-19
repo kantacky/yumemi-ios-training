@@ -108,6 +108,7 @@ final class ForecastViewModelMock: ForecastViewModel {
                 minTemperature: -10
             )
         } else {
+            self.errorMessage = "There was an error fetching the weather."
             self.weather = .init(
                 date: .now,
                 weatherCondition: .sunny,
@@ -117,34 +118,8 @@ final class ForecastViewModelMock: ForecastViewModel {
         }
     }
 
-    func reloadFailWithInvalidParameterError() {
-        self.handleError(YumemiWeatherError.invalidParameterError)
-    }
-
-    func reloadFailWithUnknownError() {
-        self.handleError(YumemiWeatherError.unknownError)
-    }
-
     func dismissAlert() {
         self.errorMessage = nil
         self.reload()
-    }
-}
-
-extension ForecastViewModelMock {
-
-    private func handleError(_ error: Error) {
-        debugPrint(error.localizedDescription)
-
-        switch error {
-        case YumemiWeatherError.invalidParameterError:
-            self.errorMessage = "Input was invalid."
-
-        case YumemiWeatherError.unknownError:
-            self.errorMessage = "There was an error fetching the weather condition."
-
-        default:
-            self.errorMessage = "There was an error fetching the weather condition."
-        }
     }
 }
