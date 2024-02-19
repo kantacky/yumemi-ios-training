@@ -10,6 +10,9 @@
 		F048A26C2B82F7A9008115FA /* YumemiTrainingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A26B2B82F7A9008115FA /* YumemiTrainingTests.swift */; };
 		F048A2792B82F7E0008115FA /* YumemiTrainingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A2782B82F7E0008115FA /* YumemiTrainingUITests.swift */; };
 		F048A27B2B82F7E0008115FA /* YumemiTrainingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A27A2B82F7E0008115FA /* YumemiTrainingUITestsLaunchTests.swift */; };
+		F048A2822B82F99B008115FA /* ForecastViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */; };
+		F048A2842B830282008115FA /* ForecastViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A2832B830282008115FA /* ForecastViewUITests.swift */; };
+		F048A28D2B832AAC008115FA /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = F048A28C2B832AAC008115FA /* ViewInspector */; };
 		F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */; };
 		F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB4B2B7F09D400A8E86F /* ForecastView.swift */; };
 		F072BB4E2B7F09D500A8E86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F072BB4D2B7F09D500A8E86F /* Assets.xcassets */; };
@@ -47,6 +50,8 @@
 		F048A2762B82F7E0008115FA /* YumemiTrainingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumemiTrainingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F048A2782B82F7E0008115FA /* YumemiTrainingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTrainingUITests.swift; sourceTree = "<group>"; };
 		F048A27A2B82F7E0008115FA /* YumemiTrainingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTrainingUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModelTests.swift; sourceTree = "<group>"; };
+		F048A2832B830282008115FA /* ForecastViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewUITests.swift; sourceTree = "<group>"; };
 		F072BB462B7F09D400A8E86F /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTrainingApp.swift; sourceTree = "<group>"; };
 		F072BB4B2B7F09D400A8E86F /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
@@ -73,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F048A28D2B832AAC008115FA /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				F048A26B2B82F7A9008115FA /* YumemiTrainingTests.swift */,
+				F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */,
 			);
 			path = YumemiTrainingTests;
 			sourceTree = "<group>";
@@ -100,6 +107,7 @@
 			children = (
 				F048A2782B82F7E0008115FA /* YumemiTrainingUITests.swift */,
 				F048A27A2B82F7E0008115FA /* YumemiTrainingUITestsLaunchTests.swift */,
+				F048A2832B830282008115FA /* ForecastViewUITests.swift */,
 			);
 			path = YumemiTrainingUITests;
 			sourceTree = "<group>";
@@ -185,6 +193,9 @@
 				F048A27D2B82F7E0008115FA /* PBXTargetDependency */,
 			);
 			name = YumemiTrainingUITests;
+			packageProductDependencies = (
+				F048A28C2B832AAC008115FA /* ViewInspector */,
+			);
 			productName = YumemiTrainingUITests;
 			productReference = F048A2762B82F7E0008115FA /* YumemiTrainingUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -243,6 +254,7 @@
 			mainGroup = F072BB3D2B7F09D400A8E86F;
 			packageReferences = (
 				F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */,
+				F048A28B2B832AAC008115FA /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = F072BB472B7F09D400A8E86F /* Products */;
 			projectDirPath = "";
@@ -287,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F048A26C2B82F7A9008115FA /* YumemiTrainingTests.swift in Sources */,
+				F048A2822B82F99B008115FA /* ForecastViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F048A2842B830282008115FA /* ForecastViewUITests.swift in Sources */,
 				F048A27B2B82F7E0008115FA /* YumemiTrainingUITestsLaunchTests.swift in Sources */,
 				F048A2792B82F7E0008115FA /* YumemiTrainingUITests.swift in Sources */,
 			);
@@ -620,6 +634,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F048A28B2B832AAC008115FA /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.10;
+			};
+		};
 		F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yumemi-inc/ios-training.git";
@@ -631,6 +653,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F048A28C2B832AAC008115FA /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F048A28B2B832AAC008115FA /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
 		F072BB582B7F0A8900A8E86F /* YumemiWeather */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */;
