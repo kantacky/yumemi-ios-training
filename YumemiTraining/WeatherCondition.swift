@@ -31,4 +31,14 @@ enum WeatherCondition: String, Decodable, CaseIterable {
                 .foregroundStyle(.blue)
         }
     }
+
+    var next: Self {
+        guard let index = Self.allCases.firstIndex(of: self) else {
+            return Self.allCases[Self.allCases.startIndex]
+        }
+        if index == Self.allCases.endIndex {
+            return Self.allCases[Self.allCases.startIndex]
+        }
+        return Self.allCases[index + 1]
+    }
 }
