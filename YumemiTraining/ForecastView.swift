@@ -35,19 +35,35 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                     if let weather = self.viewModel.weather {
                         Text("\(weather.minTemperature)")
                             .foregroundStyle(.blue)
-                            .frame(width: geometry.size.width / 4)
-                        
+                            .containerRelativeFrame(
+                                .horizontal,
+                                count: 4,
+                                spacing: .zero
+                            )
+
                         Text("\(weather.maxTemperature)")
                             .foregroundStyle(.red)
-                            .frame(width: geometry.size.width / 4)
+                            .containerRelativeFrame(
+                                .horizontal,
+                                count: 4,
+                                spacing: .zero
+                            )
                     } else {
                         Text("--")
                             .foregroundStyle(.blue)
-                            .frame(width: geometry.size.width / 4)
-                        
+                            .containerRelativeFrame(
+                                .horizontal,
+                                count: 4,
+                                spacing: .zero
+                            )
+
                         Text("--")
                             .foregroundStyle(.red)
-                            .frame(width: geometry.size.width / 4)
+                            .containerRelativeFrame(
+                                .horizontal,
+                                count: 4,
+                                spacing: .zero
+                            )
                     }
                 }
                 .fontDesign(.monospaced)
