@@ -7,6 +7,7 @@
 
 import XCTest
 
+@MainActor
 final class YumemiTrainingUITests: XCTestCase {
 
     override func setUpWithError() throws {

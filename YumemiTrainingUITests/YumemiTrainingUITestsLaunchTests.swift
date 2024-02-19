@@ -7,6 +7,7 @@
 
 import XCTest
 
+@MainActor
 final class YumemiTrainingUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
