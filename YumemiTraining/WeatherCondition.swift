@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum WeatherCondition {
+enum WeatherCondition: String {
     case sunny
     case cloudy
     case rainy
@@ -29,22 +29,6 @@ enum WeatherCondition {
             return Image(.rainy)
                 .resizable()
                 .foregroundStyle(.blue)
-        }
-    }
-    
-    static func from(string: String) -> Self? {
-        switch string {
-        case "sunny":
-            return .sunny
-            
-        case "cloudy":
-            return .cloudy
-            
-        case "rainy":
-            return .rainy
-            
-        default:
-            return nil
         }
     }
 }

@@ -23,6 +23,6 @@ final class ForecastViewModelImpl: ForecastViewModel {
     func reload() {
         let weatherConditionString: String = YumemiWeather.fetchWeatherCondition()
 
-        self.weatherCondition = .from(string: weatherConditionString)
+        self.weatherCondition = .init(rawValue: weatherConditionString)
     }
 }
