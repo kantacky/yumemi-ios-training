@@ -84,11 +84,10 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
         .onChange(of: self.scenePhase, { oldValue, newValue in
             switch newValue {
             case .active:
-                debugPrint("Foreground")
                 self.viewModel.reload()
 
             default:
-                debugPrint("Background")
+                return
             }
         })
 //        .onReceive(NotificationCenter.default.publisher(
