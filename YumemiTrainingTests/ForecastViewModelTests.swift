@@ -11,7 +11,7 @@ import XCTest
 @MainActor
 final class ForecastViewModelTests: XCTestCase {
 
-    var viewModel: any ForecastViewModel = ForecastViewModelMock()
+    let viewModel: any ForecastViewModel = ForecastViewModelMock()
 
     override func setUpWithError() throws {
         try super.setUpWithError()
