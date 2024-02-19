@@ -110,7 +110,7 @@ final class ForecastViewModelMock: ForecastViewModel {
         } else {
             self.weather = .init(
                 date: .now,
-                weatherCondition: WeatherCondition.allCases[WeatherCondition.allCases.startIndex],
+                weatherCondition: .sunny,
                 maxTemperature: 10,
                 minTemperature: -10
             )
