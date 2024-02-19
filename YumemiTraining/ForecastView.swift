@@ -9,21 +9,28 @@ import SwiftUI
 
 struct ForecastView<ViewModel: ForecastViewModel>: View {
     @StateObject var viewModel: ViewModel
-    
+
     @State private var buttonsSize: CGSize = .zero
 
     var body: some View {
         VStack(spacing: .init(80)) {
             VStack {
                 // Image
-                Color.gray
-                    .aspectRatio(1, contentMode: .fit)
-                    .containerRelativeFrame(
-                        .horizontal,
-                        count: 2,
-                        spacing: .zero
-                    )
-                
+                Group {
+                    if let weatherCondition = self.viewModel.weatherCondition {
+                        weatherCondition.image
+                            .scaledToFit()
+                    } else {
+                        Color.gray
+                    }
+                }
+                .aspectRatio(1, contentMode: .fit)
+                .containerRelativeFrame(
+                    .horizontal,
+                    count: 2,
+                    spacing: .zero
+                )
+
                 // Labels
                 HStack(spacing: .zero) {
                     Text("--")
@@ -33,7 +40,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                             count: 4,
                             spacing: .zero
                         )
-                    
+
                     Text("--")
                         .foregroundStyle(.red)
                         .containerRelativeFrame(
@@ -43,7 +50,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                         )
                 }
             }
-            
+
             // Buttons
             HStack(spacing: 0) {
                 Button {
@@ -58,7 +65,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                     spacing: .zero,
                     alignment: .center
                 )
-                
+
                 Button {
                     // Reload Action
                     self.viewModel.reload()
