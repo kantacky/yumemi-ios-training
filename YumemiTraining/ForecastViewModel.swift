@@ -93,3 +93,58 @@ extension ForecastViewModelImpl {
         }
     }
 }
+
+final class ForecastViewModelMock: ForecastViewModel {
+
+    @Published private (set) var weather: Weather?
+    @Published private (set) var errorMessage: String?
+
+    func reload() {
+        if let weather = self.weather {
+            self.weather = .init(
+                date: .now,
+                weatherCondition: weather.weatherCondition.next,
+                maxTemperature: 10,
+                minTemperature: -10
+            )
+        } else {
+            self.weather = .init(
+                date: .now,
+                weatherCondition: WeatherCondition.allCases[WeatherCondition.allCases.startIndex],
+                maxTemperature: 10,
+                minTemperature: -10
+            )
+        }
+    }
+
+    func reloadFailWithInvalidParameterError() {
+        self.handleError(YumemiWeatherError.invalidParameterError)
+    }
+
+    func reloadFailWithUnknownError() {
+        self.handleError(YumemiWeatherError.unknownError)
+    }
+
+    func dismissAlert() {
+        self.errorMessage = nil
+        self.reload()
+    }
+}
+
+extension ForecastViewModelMock {
+
+    private func handleError(_ error: Error) {
+        debugPrint(error.localizedDescription)
+
+        switch error {
+        case YumemiWeatherError.invalidParameterError:
+            self.errorMessage = "Input was invalid."
+
+        case YumemiWeatherError.unknownError:
+            self.errorMessage = "There was an error fetching the weather condition."
+
+        default:
+            self.errorMessage = "There was an error fetching the weather condition."
+        }
+    }
+}
