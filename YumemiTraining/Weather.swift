@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Weather {
-
+struct Weather: Equatable, Decodable {
     var date: Date
     var weatherCondition: WeatherCondition
     var maxTemperature: Int
