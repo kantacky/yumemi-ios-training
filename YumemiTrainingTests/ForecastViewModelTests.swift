@@ -12,7 +12,7 @@ import YumemiWeather
 
 @MainActor
 final class ForecastViewModelTests: XCTestCase {
-    func testReloadSunny() {
+    func testReloadSunny() async throws {
         // Given
         let now = Date.now
         let expected = Weather(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
@@ -39,7 +39,7 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isAlertPresented)
 
         // When
-        viewModel.reload(at: "Tokyo", date: now)
+        await viewModel.reload(area: "tokyo", date: now)
 
         // Then
         XCTAssertEqual(viewModel.weather, expected)
