@@ -26,7 +26,7 @@ final class ForecastViewModel: ObservableObject {
         }
     }
 
-    func reload(area: String, date: Date) {
+    func reload(at area: String, date: Date) {
         do {
             weather = try weatherClient.fetchThrowingWeather(area, date)
         } catch {

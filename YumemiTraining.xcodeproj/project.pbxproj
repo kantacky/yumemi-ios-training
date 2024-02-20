@@ -142,6 +142,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F0AEFC102B848CF10090F669 /* PBXTargetDependency */,
 				F048A26E2B82F7A9008115FA /* PBXTargetDependency */,
 			);
 			name = YumemiTrainingTests;
@@ -162,6 +163,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F0AEFC0E2B848CEA0090F669 /* PBXTargetDependency */,
 			);
 			name = YumemiTraining;
 			packageProductDependencies = (
@@ -203,6 +205,7 @@
 			packageReferences = (
 				F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */,
 				F0AEFC002B8447E90090F669 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				F0AEFC0A2B848CD80090F669 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = F072BB472B7F09D400A8E86F /* Products */;
 			projectDirPath = "";
@@ -267,6 +270,14 @@
 			isa = PBXTargetDependency;
 			target = F072BB452B7F09D400A8E86F /* YumemiTraining */;
 			targetProxy = F048A26D2B82F7A9008115FA /* PBXContainerItemProxy */;
+		};
+		F0AEFC0E2B848CEA0090F669 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = F0AEFC0D2B848CEA0090F669 /* SwiftLintPlugin */;
+		};
+		F0AEFC102B848CF10090F669 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = F0AEFC0F2B848CF10090F669 /* SwiftLintPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -533,6 +544,14 @@
 				minimumVersion = 1.2.1;
 			};
 		};
+		F0AEFC0A2B848CD80090F669 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -545,6 +564,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F0AEFC002B8447E90090F669 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
 			productName = Dependencies;
+		};
+		F0AEFC0D2B848CEA0090F669 /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0AEFC0A2B848CD80090F669 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
+		};
+		F0AEFC0F2B848CF10090F669 /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0AEFC0A2B848CD80090F669 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
