@@ -13,6 +13,7 @@ import YumemiWeather
 final class ForecastViewModel: ObservableObject {
     @Dependency(YumemiWeatherClient.self) var weatherClient
     @Published private(set) var weather: Weather?
+    @Published private(set) var isLoading = false
     @Published private(set) var alertMessage: String?
     var isAlertPresented: Bool {
         get {
@@ -26,9 +27,13 @@ final class ForecastViewModel: ObservableObject {
         }
     }
 
-    func reload(at area: String, date: Date) {
+    func reload(at area: String, date: Date) async {
+        self.isLoading = true
+        defer {
+            self.isLoading = false
+        }
         do {
-            weather = try weatherClient.fetchThrowingWeather(area, date)
+            weather = try await weatherClient.fetchSyncThrowingWeather(area, date)
         } catch {
             alertMessage = error.localizedDescription
         }
