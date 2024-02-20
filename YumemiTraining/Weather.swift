@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Weather: Equatable, Decodable {
+struct Weather: Equatable, Decodable, Hashable {
     var area: String
     var info: WeatherInfo
 
