@@ -12,7 +12,7 @@ import YumemiWeather
 @MainActor
 final class ForecastViewModel: ObservableObject {
     @Dependency(\.date.now) var now
-    @Dependency(\.yumemiWeatherClient) var weatherClient
+    @Dependency(YumemiWeatherClient.self) var weatherClient
     @Published private(set) var weather: Weather?
     @Published private(set) var alertMessage: String?
     var isAlertPresented: Bool {
@@ -48,6 +48,8 @@ final class ForecastViewModel: ObservableObject {
                 alertMessage = "Failed to process server response."
                 return
             }
+
+            self.weather = weather
         } catch {
             alertMessage = error.localizedDescription
         }

@@ -28,30 +28,29 @@ struct YumemiWeatherClient {
 extension YumemiWeatherClient: DependencyKey {
     static let liveValue: Self = .init(
         fetchWeatherCondition: {
-            let weatherConditionString: String = YumemiWeather.fetchWeatherCondition()
-            let weatherCondition: WeatherCondition? = .init(rawValue: weatherConditionString)
-            return weatherCondition
+            WeatherCondition(rawValue: YumemiWeather.fetchWeatherCondition())
         },
         fetchThrowingWeatherCondition: { area in
-            let weatherConditionString: String = try YumemiWeather.fetchWeatherCondition(at: area)
-            let weatherCondition: WeatherCondition? = .init(rawValue: weatherConditionString)
-            return weatherCondition
+            WeatherCondition(rawValue: try YumemiWeather.fetchWeatherCondition(at: area))
         },
         fetchThrowingWeather: { area, date in
-            let request: WeatherRequest = .init(area: area, date: date)
-            let weatherString: String = try YumemiWeather.fetchWeather(request.jsonString ?? "")
-            let weather = Weather(jsonString: weatherString)
-            return weather
+            let request = WeatherRequest(area: area, date: date)
+            let response = try YumemiWeather.fetchWeather(request.jsonString ?? "")
+            return Weather(jsonString: response)
         }
     )
 }
 
 extension YumemiWeatherClient: TestDependencyKey {
     static let testValue: Self = .init(
-        fetchWeatherCondition: unimplemented(),
-        fetchThrowingWeatherCondition: unimplemented(),
+        fetchWeatherCondition: {
+            WeatherCondition.sunny
+        },
+        fetchThrowingWeatherCondition: { _ in
+            WeatherCondition.sunny
+        },
         fetchThrowingWeather: { _, date in
-            .init(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
+            Weather(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
         }
     )
 }
