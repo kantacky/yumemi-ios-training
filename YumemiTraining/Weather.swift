@@ -66,14 +66,10 @@ extension WeatherResponse {
 }
 
 enum WeatherError: LocalizedError {
-    case encodeRequestError
     case decodeResponseError
 
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
-        case .encodeRequestError:
-            return "Failed to encode request"
-
         case .decodeResponseError:
             return "Failed to decode response"
         }

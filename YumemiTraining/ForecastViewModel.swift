@@ -33,24 +33,4 @@ final class ForecastViewModel: ObservableObject {
             alertMessage = error.localizedDescription
         }
     }
-
-    private func fetchWeather(request: WeatherRequest) {
-        do {
-            guard let requestString = request.jsonString else {
-                alertMessage = "Failed to process request."
-                return
-            }
-
-            let weatherString = try YumemiWeather.fetchWeather(requestString)
-
-            guard let weather = Weather(jsonString: weatherString) else {
-                alertMessage = "Failed to process server response."
-                return
-            }
-
-            self.weather = weather
-        } catch {
-            alertMessage = error.localizedDescription
-        }
-    }
 }
