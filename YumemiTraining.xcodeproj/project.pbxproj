@@ -20,8 +20,6 @@
 		F072BB652B7F569200A8E86F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB642B7F569200A8E86F /* Weather.swift */; };
 		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
 		F072BB6B2B7F848600A8E86F /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB6A2B7F848600A8E86F /* NewView.swift */; };
-		F0AEFBFE2B843AF90090F669 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = F0AEFBFD2B843AF90090F669 /* ViewInspector */; };
-		F0AEFBFF2B843B080090F669 /* ForecastViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A2832B830282008115FA /* ForecastViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +35,6 @@
 /* Begin PBXFileReference section */
 		F048A2692B82F7A9008115FA /* YumemiTrainingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumemiTrainingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModelTests.swift; sourceTree = "<group>"; };
-		F048A2832B830282008115FA /* ForecastViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewTests.swift; sourceTree = "<group>"; };
 		F072BB462B7F09D400A8E86F /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTrainingApp.swift; sourceTree = "<group>"; };
 		F072BB4B2B7F09D400A8E86F /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
@@ -57,7 +54,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0AEFBFE2B843AF90090F669 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */,
-				F048A2832B830282008115FA /* ForecastViewTests.swift */,
 			);
 			path = YumemiTrainingTests;
 			sourceTree = "<group>";
@@ -143,7 +138,6 @@
 			);
 			name = YumemiTrainingTests;
 			packageProductDependencies = (
-				F0AEFBFD2B843AF90090F669 /* ViewInspector */,
 			);
 			productName = YumemiTrainingTests;
 			productReference = F048A2692B82F7A9008115FA /* YumemiTrainingTests.xctest */;
@@ -199,7 +193,6 @@
 			mainGroup = F072BB3D2B7F09D400A8E86F;
 			packageReferences = (
 				F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */,
-				F0AEFBFC2B843AF80090F669 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = F072BB472B7F09D400A8E86F /* Products */;
 			projectDirPath = "";
@@ -235,7 +228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0AEFBFF2B843B080090F669 /* ForecastViewTests.swift in Sources */,
 				F048A2822B82F99B008115FA /* ForecastViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,14 +513,6 @@
 				kind = branch;
 			};
 		};
-		F0AEFBFC2B843AF80090F669 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nalexn/ViewInspector";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.10;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -536,11 +520,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */;
 			productName = YumemiWeather;
-		};
-		F0AEFBFD2B843AF90090F669 /* ViewInspector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F0AEFBFC2B843AF80090F669 /* XCRemoteSwiftPackageReference "ViewInspector" */;
-			productName = ViewInspector;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
