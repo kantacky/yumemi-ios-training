@@ -31,17 +31,4 @@ enum WeatherCondition: String, Decodable, CaseIterable {
                 .foregroundStyle(.blue)
         }
     }
-
-    var next: Self {
-        switch self {
-        case .sunny:
-            return .cloudy
-
-        case .cloudy:
-            return .rainy
-
-        case .rainy:
-            return .sunny
-        }
-    }
 }
