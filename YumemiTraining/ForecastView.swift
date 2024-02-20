@@ -101,5 +101,5 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
 }
 
 #Preview {
-    ForecastView(viewModel: ForecastViewModelImpl())
+    ForecastView(viewModel: ForecastViewModel())
 }

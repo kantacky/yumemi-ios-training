@@ -17,7 +17,7 @@ struct NewView: View {
             }
             .fullScreenCover(isPresented: $isPresented) {
                 ForecastView(
-                    viewModel: ForecastViewModelImpl()
+                    viewModel: ForecastViewModel()
                 )
                 .onDisappear {
                     self.isPresented = true
