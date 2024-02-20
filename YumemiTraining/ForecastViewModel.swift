@@ -44,7 +44,7 @@ final class ForecastViewModelImpl: ForecastViewModel {
         do {
             let weatherConditionString: String = try YumemiWeather.fetchWeatherCondition(at: at)
             
-            self.weatherCondition = .from(string: weatherConditionString)
+            self.weatherCondition = .init(rawValue: weatherConditionString)
         } catch {
             debugPrint(error.localizedDescription)
 
