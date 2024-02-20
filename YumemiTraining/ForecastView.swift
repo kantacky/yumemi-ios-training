@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ForecastView<ViewModel: ForecastViewModel>: View {
+struct ForecastView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel: ViewModel
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject var viewModel: ForecastViewModel
     @State private var buttonsSize: CGSize = .zero
 
     var body: some View {
