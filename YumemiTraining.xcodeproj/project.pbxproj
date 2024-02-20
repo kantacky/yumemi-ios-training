@@ -20,6 +20,7 @@
 		F072BB652B7F569200A8E86F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB642B7F569200A8E86F /* Weather.swift */; };
 		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
 		F072BB6B2B7F848600A8E86F /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB6A2B7F848600A8E86F /* NewView.swift */; };
+		F0AEFC022B8447E90090F669 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = F0AEFC012B8447E90090F669 /* Dependencies */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F072BB592B7F0A8900A8E86F /* YumemiWeather in Frameworks */,
+				F0AEFC022B8447E90090F669 /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +160,7 @@
 			name = YumemiTraining;
 			packageProductDependencies = (
 				F072BB582B7F0A8900A8E86F /* YumemiWeather */,
+				F0AEFC012B8447E90090F669 /* Dependencies */,
 			);
 			productName = YumemiTraining;
 			productReference = F072BB462B7F09D400A8E86F /* YumemiTraining.app */;
@@ -193,6 +196,7 @@
 			mainGroup = F072BB3D2B7F09D400A8E86F;
 			packageReferences = (
 				F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */,
+				F0AEFC002B8447E90090F669 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 			);
 			productRefGroup = F072BB472B7F09D400A8E86F /* Products */;
 			projectDirPath = "";
@@ -513,6 +517,14 @@
 				kind = branch;
 			};
 		};
+		F0AEFC002B8447E90090F669 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -520,6 +532,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */;
 			productName = YumemiWeather;
+		};
+		F0AEFC012B8447E90090F669 /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0AEFC002B8447E90090F669 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
