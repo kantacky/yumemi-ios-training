@@ -1,0 +1,28 @@
+//
+//  Weather.swift
+//  YumemiTraining
+//
+//  Created by 及川 寛太 on 2024/02/20.
+//
+
+import Foundation
+
+struct Weather: Equatable, Decodable {
+    var area: String
+    var info: WeatherInfo
+
+    static func from(jsonString: String) throws -> Self {
+        guard let data: Data = jsonString.data(using: .utf8) else {
+            throw WeatherError.decodeResponseError
+        }
+
+        return try from(data: data)
+    }
+
+    static func from(data: Data) throws -> Self {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        return try decoder.decode(Self.self, from: data)
+    }
+}

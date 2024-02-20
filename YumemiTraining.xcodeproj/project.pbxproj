@@ -27,6 +27,7 @@
 		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
 		F0D6E0AC2B8D85A700FD587E /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D6E0AB2B8D85A700FD587E /* Encoder.swift */; };
 		F0D6E0AE2B8D864700FD587E /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D6E0AD2B8D864700FD587E /* Decoder.swift */; };
+		F0AEFC182B849E220090F669 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC172B849E220090F669 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		F0AEFC302B85E2270090F669 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		F0D6E0AB2B8D85A700FD587E /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		F0D6E0AD2B8D864700FD587E /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		F0AEFC172B849E220090F669 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				F0D6E0AB2B8D85A700FD587E /* Encoder.swift */,
 				F0D6E0AD2B8D864700FD587E /* Decoder.swift */,
 				F072BB642B7F569200A8E86F /* WeatherInfo.swift */,
+				F0AEFC172B849E220090F669 /* Weather.swift */,
 				F0AEFC132B8492880090F669 /* WeatherRequest.swift */,
 				F0AEFC152B8492990090F669 /* WeatherError.swift */,
 				F072BB5C2B7F2C9300A8E86F /* WeatherCondition.swift */,
@@ -263,6 +266,7 @@
 				F0AEFC062B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift in Sources */,
 				F072BB5D2B7F2C9300A8E86F /* WeatherCondition.swift in Sources */,
 				F072BB5B2B7F2B9600A8E86F /* ForecastViewModel.swift in Sources */,
+				F0AEFC182B849E220090F669 /* Weather.swift in Sources */,
 				F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */,
 				F072BB6B2B7F848600A8E86F /* NewView.swift in Sources */,
 				F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */,
