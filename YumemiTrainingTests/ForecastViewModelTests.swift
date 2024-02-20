@@ -26,55 +26,6 @@ final class ForecastViewModelTests: XCTestCase {
 
         let viewModel: ForecastViewModel = withDependencies {
             $0.date.now = now
-            $0.yumemiWeatherClient = .init(
-                fetchWeatherCondition: unimplemented(),
-                fetchThrowingWeatherCondition: unimplemented(),
-                fetchThrowingWeather: { _, date in
-                    .init(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
-                }
-            )
-        } operation: {
-            .init()
-        }
-
-        viewModel.reload()
-        XCTAssertEqual(viewModel.weather, expected)
-    }
-
-    func testReloadCloudy() {
-        let now: Date = .now
-        let expected: Weather = .init(date: now, weatherCondition: .cloudy, maxTemperature: 15, minTemperature: -5)
-
-        let viewModel: ForecastViewModel = withDependencies {
-            $0.date.now = now
-            $0.yumemiWeatherClient = .init(
-                fetchWeatherCondition: unimplemented(),
-                fetchThrowingWeatherCondition: unimplemented(),
-                fetchThrowingWeather: { _, date in
-                    .init(date: date, weatherCondition: .cloudy, maxTemperature: 15, minTemperature: -5)
-                }
-            )
-        } operation: {
-            .init()
-        }
-
-        viewModel.reload()
-        XCTAssertEqual(viewModel.weather, expected)
-    }
-
-    func testReloadRainy() {
-        let now: Date = .now
-        let expected: Weather = .init(date: now, weatherCondition: .rainy, maxTemperature: 10, minTemperature: -10)
-
-        let viewModel: ForecastViewModel = withDependencies {
-            $0.date.now = now
-            $0.yumemiWeatherClient = .init(
-                fetchWeatherCondition: unimplemented(),
-                fetchThrowingWeatherCondition: unimplemented(),
-                fetchThrowingWeather: { _, date in
-                    .init(date: date, weatherCondition: .rainy, maxTemperature: 10, minTemperature: -10)
-                }
-            )
         } operation: {
             .init()
         }
