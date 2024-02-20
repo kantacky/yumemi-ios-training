@@ -9,19 +9,32 @@ import Dependencies
 import Foundation
 
 struct Encoder {
-    private(set) var encodeWeatherRequest: @Sendable (WeatherRequest) throws -> String
+    private(set) var encodeWeatherInfoRequest: @Sendable (WeatherRequest) throws -> String
+    private(set) var encodeWeatherListRequest: @Sendable (WeatherListRequest) throws -> String
 
     init(
-        encodeWeatherRequest: @escaping @Sendable (WeatherRequest) throws -> String
+        encodeWeatherInfoRequest: @escaping @Sendable (WeatherRequest) throws -> String,
+        encodeWeatherListRequest: @escaping @Sendable (WeatherListRequest) throws -> String
     ) {
-        self.encodeWeatherRequest = encodeWeatherRequest
+        self.encodeWeatherInfoRequest = encodeWeatherInfoRequest
+        self.encodeWeatherListRequest = encodeWeatherListRequest
     }
 }
 
-// swiftlint:disable trailing_closure
 extension Encoder: DependencyKey {
     static let liveValue = Encoder(
-        encodeWeatherRequest: { request in
+        encodeWeatherInfoRequest: { request in
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            encoder.dateEncodingStrategy = .iso8601
+            encoder.outputFormatting = .sortedKeys
+            let data = try encoder.encode(request)
+            guard let jsonString = String(data: data, encoding: .utf8) else {
+                throw WeatherError.encodeRequestError
+            }
+            return jsonString
+        },
+        encodeWeatherListRequest: { request in
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
             encoder.dateEncodingStrategy = .iso8601
@@ -36,4 +49,3 @@ extension Encoder: DependencyKey {
 
     static let testValue = liveValue
 }
-// swiftlint:enable trailing_closure

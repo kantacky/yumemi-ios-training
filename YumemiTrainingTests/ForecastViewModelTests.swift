@@ -20,7 +20,8 @@ final class ForecastViewModelTests: XCTestCase {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeather: { _, date in
                     WeatherInfo(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
-                }
+                },
+                fetchWeatherList: unimplemented()
             )
         } operation: {
             ForecastViewModel()
@@ -50,7 +51,8 @@ final class ForecastViewModelTests: XCTestCase {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeather: { _, _ in
                     throw YumemiWeatherError.unknownError
-                }
+                },
+                fetchWeatherList: unimplemented()
             )
         } operation: {
             ForecastViewModel()
