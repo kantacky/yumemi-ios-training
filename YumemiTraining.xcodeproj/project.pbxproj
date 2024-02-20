@@ -28,6 +28,7 @@
 		F0D6E0AC2B8D85A700FD587E /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D6E0AB2B8D85A700FD587E /* Encoder.swift */; };
 		F0D6E0AE2B8D864700FD587E /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D6E0AD2B8D864700FD587E /* Decoder.swift */; };
 		F0AEFC1E2B84A16B0090F669 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC1D2B84A16B0090F669 /* WeatherListViewModel.swift */; };
+		F0AEFC202B84A3E50090F669 /* WeatherListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC1F2B84A3E50090F669 /* WeatherListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		F0D6E0AB2B8D85A700FD587E /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		F0D6E0AD2B8D864700FD587E /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		F0AEFC1D2B84A16B0090F669 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
+		F0AEFC1F2B84A3E50090F669 /* WeatherListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				F0AEFC302B85E2270090F669 /* TemperatureView.swift */,
 				F072BB5A2B7F2B9600A8E86F /* ForecastViewModel.swift */,
 				F0AEFC052B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift */,
+				F0AEFC1F2B84A3E50090F669 /* WeatherListView.swift */,
 				F0AEFC1D2B84A16B0090F669 /* WeatherListViewModel.swift */,
 				F0AEFC032B8448B80090F669 /* YumemiWeatherClient.swift */,
 				F0D6E0AB2B8D85A700FD587E /* Encoder.swift */,
@@ -273,6 +276,7 @@
 				F072BB6B2B7F848600A8E86F /* NewView.swift in Sources */,
 				F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */,
 				F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */,
+				F0AEFC202B84A3E50090F669 /* WeatherListView.swift in Sources */,
 				F0AEFC162B8492990090F669 /* WeatherError.swift in Sources */,
 				F0D6E0AC2B8D85A700FD587E /* Encoder.swift in Sources */,
 				F09D077D2B8DA313006FBE05 /* WeatherListRequest.swift in Sources */,
