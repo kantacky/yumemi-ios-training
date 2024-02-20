@@ -53,7 +53,8 @@ struct ForecastView: View {
                 )
 
                 Button {
-                    self.viewModel.reload()
+                    // Reload Action
+                    self.viewModel.reload(area: "tokyo", date: .now)
                 } label: {
                     Text("Reload")
                 }
@@ -71,7 +72,7 @@ struct ForecastView: View {
         }
         .offset(.init(width: 0, height: (self.buttonsSize.height + 80) / 2))
         .onAppear {
-            viewModel.reload()
+            viewModel.reload(area: "tokyo", date: .now)
         }
         .alert(
             "There was an Error Retrieving Weather.",
@@ -85,7 +86,7 @@ struct ForecastView: View {
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
-                viewModel.reload()
+                viewModel.reload(area: "tokyo", date: .now)
 
             default:
                 return

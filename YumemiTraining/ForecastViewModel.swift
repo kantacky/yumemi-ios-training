@@ -11,7 +11,6 @@ import YumemiWeather
 
 @MainActor
 final class ForecastViewModel: ObservableObject {
-    @Dependency(\.date.now) var now
     @Dependency(YumemiWeatherClient.self) var weatherClient
     @Published private(set) var weather: Weather?
     @Published private(set) var alertMessage: String?
@@ -27,9 +26,9 @@ final class ForecastViewModel: ObservableObject {
         }
     }
 
-    func reload() {
+    func reload(area: String, date: Date) {
         do {
-            self.weather = try self.weatherClient.fetchThrowingWeather("tokyo", self.now)
+            self.weather = try self.weatherClient.fetchThrowingWeather(area, date)
         } catch {
             alertMessage = error.localizedDescription
         }

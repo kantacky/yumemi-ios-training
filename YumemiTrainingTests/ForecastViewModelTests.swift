@@ -30,7 +30,7 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.errorMessage, nil)
 
         // When
-        viewModel.reload()
+        viewModel.reload(area: "tokyo", date: now)
 
         // Then
         XCTAssertEqual(viewModel.weather, expected)
