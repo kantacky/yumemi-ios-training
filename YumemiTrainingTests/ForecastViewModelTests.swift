@@ -12,14 +12,6 @@ import Dependencies
 @MainActor
 final class ForecastViewModelTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
-
     func testReloadSunny() {
         let now: Date = .now
         let expected: Weather = .init(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
