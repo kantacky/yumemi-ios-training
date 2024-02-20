@@ -13,13 +13,13 @@ struct YumemiWeatherClient {
     private(set) var fetchWeatherCondition: @Sendable () -> WeatherCondition?
     private(set) var fetchThrowingWeatherCondition: @Sendable (String) throws -> WeatherCondition?
     private(set) var fetchThrowingWeather: @Sendable (String, Date) throws -> Weather?
-    private(set) var fetchSyncThrowingWeather: @Sendable (String, Date) throws -> Weather?
+    private(set) var fetchSyncThrowingWeather: @Sendable (String, Date) async throws -> Weather?
 
     init(
         fetchWeatherCondition: @escaping @Sendable () -> WeatherCondition?,
         fetchThrowingWeatherCondition: @escaping @Sendable (String) throws -> WeatherCondition?,
         fetchThrowingWeather: @escaping @Sendable (String, Date) throws -> Weather?,
-        fetchSyncThrowingWeather: @escaping @Sendable (String, Date) throws -> Weather?
+        fetchSyncThrowingWeather: @escaping @Sendable (String, Date) async throws -> Weather?
     ) {
         self.fetchWeatherCondition = fetchWeatherCondition
         self.fetchThrowingWeatherCondition = fetchThrowingWeatherCondition
