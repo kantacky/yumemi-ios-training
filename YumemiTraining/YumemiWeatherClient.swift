@@ -26,7 +26,7 @@ struct YumemiWeatherClient {
 }
 
 extension YumemiWeatherClient: DependencyKey {
-    static let liveValue: Self = .init(
+    static let liveValue = YumemiWeatherClient(
         fetchWeatherCondition: {
             WeatherCondition(rawValue: YumemiWeather.fetchWeatherCondition())
         },
@@ -42,7 +42,7 @@ extension YumemiWeatherClient: DependencyKey {
 }
 
 extension YumemiWeatherClient: TestDependencyKey {
-    static let testValue: Self = .init(
+    static let testValue = YumemiWeatherClient(
         fetchWeatherCondition: {
             WeatherCondition.sunny
         },

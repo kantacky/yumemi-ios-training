@@ -11,10 +11,10 @@ struct ForecastView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: ForecastViewModel
-    @State private var buttonsSize: CGSize = .zero
+    @State private var buttonsSize = CGSize.zero
 
     var body: some View {
-        VStack(spacing: .init(80)) {
+        VStack(spacing: 80) {
             VStack {
                 Group {
                     if let weather = self.viewModel.weather {
@@ -39,7 +39,6 @@ struct ForecastView: View {
 
             HStack(spacing: 0) {
                 Button {
-                    // Close Action
                     self.dismiss()
                 } label: {
                     Text("Close")

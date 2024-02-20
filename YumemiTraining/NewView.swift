@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewView: View {
-    @State private var isPresented: Bool = true
+    @State private var isPresented = true
 
     var body: some View {
         EmptyView()
