@@ -20,17 +20,16 @@ struct WeatherRequest {
 }
 
 extension WeatherRequest: Encodable {
-    var jsonString: String? {
-        let encoder: JSONEncoder = .init()
+    func jsonString() throws -> String {
+        let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dateEncodingStrategy = .iso8601
         encoder.outputFormatting = .prettyPrinted
 
-        guard
-            let data: Data = try? encoder.encode(self),
-            let jsonString: String = .init(data: data, encoding: .utf8)
-        else {
-            return nil
+        let data = try encoder.encode(self)
+
+        guard let jsonString = String(data: data, encoding: .utf8) else {
+            throw WeatherError.encodeRequestError
         }
 
         return jsonString
@@ -66,10 +65,14 @@ extension WeatherResponse {
 }
 
 enum WeatherError: LocalizedError {
+    case encodeRequestError
     case decodeResponseError
 
     var errorDescription: String? {
         switch self {
+        case .encodeRequestError:
+            return "Failed to encode response"
+
         case .decodeResponseError:
             return "Failed to decode response"
         }
