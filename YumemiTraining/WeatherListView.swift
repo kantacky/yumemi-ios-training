@@ -42,6 +42,7 @@ struct WeatherListView: View {
             }
             .navigationDestination(for: Weather.self) { weather in
                 ForecastView(viewModel: ForecastViewModel(weather: weather))
+                    .navigationTitle(weather.area)
             }
             .refreshable {
                 await viewModel.reload(areas: Area.allCases.map { $0.rawValue }, date: .now)
