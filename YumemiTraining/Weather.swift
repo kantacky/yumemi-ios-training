@@ -11,18 +11,18 @@ struct Weather: Equatable, Decodable {
     var area: String
     var info: WeatherInfo
 
-    static func from(jsonString: String) throws -> Self {
+    static func listFrom(jsonString: String) throws -> [Self] {
         guard let data: Data = jsonString.data(using: .utf8) else {
             throw WeatherError.decodeResponseError
         }
 
-        return try from(data: data)
+        return try listFrom(data: data)
     }
 
-    static func from(data: Data) throws -> Self {
+    static func listFrom(data: Data) throws -> [Self] {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
-        return try decoder.decode(Self.self, from: data)
+        return try decoder.decode([Self].self, from: data)
     }
 }
