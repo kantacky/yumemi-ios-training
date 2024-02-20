@@ -14,7 +14,7 @@ struct NewView: View {
         EmptyView()
             .fullScreenCover(isPresented: $isPresented) {
                 ForecastView(
-                    viewModel: ForecastViewModel()
+                    viewModel: ForecastViewModel(weather: Weather(area: "Tokyo", info: WeatherInfo(date: .now, weatherCondition: .sunny, maxTemperature: 10, minTemperature: -10)))
                 )
                 .onDisappear {
                     isPresented = true
