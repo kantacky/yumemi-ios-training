@@ -23,9 +23,17 @@ final class ForecastViewModelTests: XCTestCase {
         }
 
         // When
+        // After initialized
+
+        // Then
+        XCTAssertEqual(viewModel.weather, nil)
+        XCTAssertEqual(viewModel.errorMessage, nil)
+
+        // When
         viewModel.reload()
 
         // Then
         XCTAssertEqual(viewModel.weather, expected)
+        XCTAssertEqual(viewModel.errorMessage, nil)
     }
 }
