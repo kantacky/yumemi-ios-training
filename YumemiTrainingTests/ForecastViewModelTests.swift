@@ -13,16 +13,19 @@ import Dependencies
 final class ForecastViewModelTests: XCTestCase {
 
     func testReloadSunny() {
-        let now: Date = .now
-        let expected: Weather = .init(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
-
-        let viewModel: ForecastViewModel = withDependencies {
+        // Given
+        let now = Date.now
+        let expected = Weather(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
+        let viewModel = withDependencies {
             $0.date.now = now
         } operation: {
-            .init()
+            ForecastViewModel()
         }
 
+        // When
         viewModel.reload()
+
+        // Then
         XCTAssertEqual(viewModel.weather, expected)
     }
 }
