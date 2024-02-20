@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F048A26C2B82F7A9008115FA /* YumemiTrainingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A26B2B82F7A9008115FA /* YumemiTrainingTests.swift */; };
 		F048A2822B82F99B008115FA /* ForecastViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */; };
 		F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */; };
 		F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB4B2B7F09D400A8E86F /* ForecastView.swift */; };
@@ -37,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		F048A2692B82F7A9008115FA /* YumemiTrainingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumemiTrainingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F048A26B2B82F7A9008115FA /* YumemiTrainingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTrainingTests.swift; sourceTree = "<group>"; };
 		F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModelTests.swift; sourceTree = "<group>"; };
 		F048A2832B830282008115FA /* ForecastViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewTests.swift; sourceTree = "<group>"; };
 		F072BB462B7F09D400A8E86F /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +75,6 @@
 		F048A26A2B82F7A9008115FA /* YumemiTrainingTests */ = {
 			isa = PBXGroup;
 			children = (
-				F048A26B2B82F7A9008115FA /* YumemiTrainingTests.swift */,
 				F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */,
 				F048A2832B830282008115FA /* ForecastViewTests.swift */,
 			);
@@ -239,7 +236,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0AEFBFF2B843B080090F669 /* ForecastViewTests.swift in Sources */,
-				F048A26C2B82F7A9008115FA /* YumemiTrainingTests.swift in Sources */,
 				F048A2822B82F99B008115FA /* ForecastViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
