@@ -17,7 +17,7 @@ struct ForecastView: View {
         VStack(spacing: 80) {
             VStack {
                 Group {
-                    if let weather = self.viewModel.weather {
+                    if let weather = viewModel.weather {
                         weather.weatherCondition.image
                             .scaledToFit()
                     } else {
@@ -39,7 +39,7 @@ struct ForecastView: View {
 
             HStack(spacing: 0) {
                 Button {
-                    self.dismiss()
+                    dismiss()
                 } label: {
                     Text("Close")
                 }
@@ -53,7 +53,7 @@ struct ForecastView: View {
 
                 Button {
                     // Reload Action
-                    self.viewModel.reload(area: "tokyo", date: .now)
+                    viewModel.reload(area: "tokyo", date: .now)
                 } label: {
                     Text("Reload")
                 }
@@ -66,10 +66,10 @@ struct ForecastView: View {
                 )
             }
             .readSize { size in
-                self.buttonsSize = size
+                buttonsSize = size
             }
         }
-        .offset(.init(width: 0, height: (self.buttonsSize.height + 80) / 2))
+        .offset(.init(width: 0, height: (buttonsSize.height + 80) / 2))
         .onAppear {
             viewModel.reload(area: "tokyo", date: .now)
         }
@@ -81,7 +81,7 @@ struct ForecastView: View {
                 Text(message)
             }
         }
-        .onChange(of: self.scenePhase, { oldValue, newValue in
+        .onChange(of: scenePhase, { oldValue, newValue in
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
@@ -95,7 +95,7 @@ struct ForecastView: View {
         // .onReceive(NotificationCenter.default.publisher(
         //     for: UIApplication.willEnterForegroundNotification
         // )) { _ in
-        //     self.viewModel.reload()
+        //     viewModel.reload()
         // }
     }
 }

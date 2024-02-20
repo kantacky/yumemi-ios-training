@@ -20,7 +20,7 @@ struct NewView: View {
                     viewModel: ForecastViewModel()
                 )
                 .onDisappear {
-                    self.isPresented = true
+                    isPresented = true
                 }
             }
     }
