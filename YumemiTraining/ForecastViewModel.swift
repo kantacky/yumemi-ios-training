@@ -16,6 +16,7 @@ protocol ForecastViewModel: ObservableObject {
     func reload() -> Void
 }
 
+@MainActor
 final class ForecastViewModelImpl: ForecastViewModel {
     
     @Published private (set) var weatherCondition: WeatherCondition?
