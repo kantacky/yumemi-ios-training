@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum WeatherCondition: String, Decodable {
+enum WeatherCondition: String, Decodable, CaseIterable {
     case cloudy
     case rainy
     case sunny
