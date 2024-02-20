@@ -11,6 +11,7 @@ struct ForecastView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: ForecastViewModel
+    @State private var weatherCardSize = CGSize.zero
     @State private var buttonsSize = CGSize.zero
 
     var body: some View {
@@ -52,7 +53,9 @@ struct ForecastView: View {
                 )
 
                 Button {
-                    viewModel.reload(at: "tokyo", date: .now)
+                    Task {
+                        await viewModel.reload(at: "tokyo", date: .now)
+                    }
                 } label: {
                     Text("Reload")
                 }
@@ -69,8 +72,8 @@ struct ForecastView: View {
             }
         }
         .offset(.init(width: 0, height: (buttonsSize.height + 80) / 2))
-        .onAppear {
-            viewModel.reload(at: "tokyo", date: .now)
+        .task {
+            await viewModel.reload(at: "tokyo", date: .now)
         }
         .alert(
             "There was an Error Retrieving Weather.",
@@ -84,7 +87,9 @@ struct ForecastView: View {
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
-                viewModel.reload(at: "tokyo", date: .now)
+                Task {
+                    await viewModel.reload(at: "tokyo", date: .now)
+                }
 
             default:
                 return
