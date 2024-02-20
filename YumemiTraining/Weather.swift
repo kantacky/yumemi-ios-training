@@ -56,33 +56,26 @@ extension WeatherResponse {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
 
-        guard let weather: Self = try? decoder.decode(Weather.self, from: data) else {
+        do {
+            let weather: Self = try decoder.decode(Weather.self, from: data)
+            self = weather
+        } catch {
             return nil
         }
-
-        self = weather
     }
 }
 
-extension Weather {
-    static let sunny: Self = .init(
-        date: .now,
-        weatherCondition: .sunny,
-        maxTemperature: 10,
-        minTemperature: -10
-    )
+enum WeatherError: LocalizedError {
+    case encodeRequestError
+    case decodeResponseError
 
-    static let cloudy: Self = .init(
-        date: .now,
-        weatherCondition: .cloudy,
-        maxTemperature: 10,
-        minTemperature: -10
-    )
+    var localizedDescription: String {
+        switch self {
+        case .encodeRequestError:
+            return "Failed to encode request"
 
-    static let rainy: Self = .init(
-        date: .now,
-        weatherCondition: .rainy,
-        maxTemperature: 10,
-        minTemperature: -10
-    )
+        case .decodeResponseError:
+            return "Failed to decode response"
+        }
+    }
 }

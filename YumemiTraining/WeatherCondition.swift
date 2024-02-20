@@ -44,17 +44,4 @@ enum WeatherCondition: String, Decodable, CaseIterable {
             return .sunny
         }
     }
-
-    var exampleWeather: Weather {
-        switch self {
-        case .sunny:
-            return .sunny
-
-        case .cloudy:
-            return .cloudy
-
-        case .rainy:
-            return .rainy
-        }
-    }
 }

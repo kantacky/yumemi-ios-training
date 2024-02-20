@@ -40,7 +40,7 @@ extension YumemiWeatherClient: DependencyKey {
         fetchThrowingWeather: { area, date in
             let request: WeatherRequest = .init(area: area, date: date)
             let weatherString: String = try YumemiWeather.fetchWeather(request.jsonString ?? "")
-            let weather: Weather? = try .from(jsonString: weatherString)
+            let weather = Weather(jsonString: weatherString)
             return weather
         }
     )
