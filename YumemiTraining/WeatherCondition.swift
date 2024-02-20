@@ -33,7 +33,28 @@ enum WeatherCondition: String, Decodable, CaseIterable {
     }
 
     var next: Self {
-        var iterator = Self.allCases.makeIterator()
-        return iterator.next() ?? .sunny
+        switch self {
+        case .sunny:
+            return .cloudy
+
+        case .cloudy:
+            return .rainy
+
+        case .rainy:
+            return .sunny
+        }
+    }
+
+    var exampleWeather: Weather {
+        switch self {
+        case .sunny:
+            return .sunny
+
+        case .cloudy:
+            return .cloudy
+
+        case .rainy:
+            return .rainy
+        }
     }
 }

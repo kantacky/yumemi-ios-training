@@ -112,16 +112,7 @@ final class ForecastViewModelMock: ForecastViewModel {
 
     func reload() {
         if let weather = self.weather {
-            switch weather.weatherCondition.next {
-            case .sunny:
-                self.weather = .sunny
-
-            case .cloudy:
-                self.weather = .cloudy
-
-            case .rainy:
-                self.weather = .rainy
-            }
+            self.weather = weather.weatherCondition.next.exampleWeather
         } else {
             self.alertMessage = "There was an error fetching the weather."
             self.weather = .sunny
