@@ -91,11 +91,12 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 return
             }
         })
-//        .onReceive(NotificationCenter.default.publisher(
-//            for: UIApplication.willEnterForegroundNotification
-//        )) { _ in
-//            self.viewModel.reload()
-//        }
+        // MARK: Alternative
+        // .onReceive(NotificationCenter.default.publisher(
+        //     for: UIApplication.willEnterForegroundNotification
+        // )) { _ in
+        //     self.viewModel.reload()
+        // }
     }
 }
 

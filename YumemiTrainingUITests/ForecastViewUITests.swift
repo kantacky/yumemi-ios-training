@@ -24,29 +24,29 @@ final class ForecastViewUITests: XCTestCase {
     }
 
     func testOnAppearSunny() throws {
-        let imageName = try view.inspect().geometryReader().vStack().group(0).image(0).actualImage().name()
-        let minTemperature = try view.inspect().geometryReader().vStack().hStack(0).text(0).string()
-        let maxTemperature = try view.inspect().geometryReader().vStack().hStack(0).text(1).string()
+        let imageName = try view.inspect().vStack().vStack(0).group(0).image(0).actualImage().name()
+        let minTemperature = try view.inspect().vStack().vStack(0).hStack(0).text(0).string()
+        let maxTemperature = try view.inspect().vStack().vStack(0).hStack(0).text(1).string()
         XCTAssertEqual(imageName, "Sunny")
         XCTAssertEqual(minTemperature, "-10")
         XCTAssertEqual(maxTemperature, "10")
     }
 
     func testReloadCloudy() throws {
-        try view.inspect().geometryReader().hStack().button(1).tap()
-        let imageName = try view.inspect().geometryReader().vStack().group(0).image(0).actualImage().name()
-        let minTemperature = try view.inspect().geometryReader().vStack().hStack(0).text(0).string()
-        let maxTemperature = try view.inspect().geometryReader().vStack().hStack(0).text(1).string()
+        try view.inspect().vStack().hStack(0).button(1).tap()
+        let imageName = try view.inspect().vStack().vStack(0).group(0).image(0).actualImage().name()
+        let minTemperature = try view.inspect().vStack().vStack(0).hStack(0).text(0).string()
+        let maxTemperature = try view.inspect().vStack().vStack(0).hStack(0).text(1).string()
         XCTAssertEqual(imageName, "Cloudy")
         XCTAssertEqual(minTemperature, "-10")
         XCTAssertEqual(maxTemperature, "10")
     }
 
     func testReloadRainy() throws {
-        try view.inspect().geometryReader().hStack().button(1).tap()
-        let imageName = try view.inspect().geometryReader().vStack().group(0).image(0).actualImage().name()
-        let minTemperature = try view.inspect().geometryReader().vStack().hStack(0).text(0).string()
-        let maxTemperature = try view.inspect().geometryReader().vStack().hStack(0).text(1).string()
+        try view.inspect().vStack().hStack(0).button(1).tap()
+        let imageName = try view.inspect().vStack().vStack(0).group(0).image(0).actualImage().name()
+        let minTemperature = try view.inspect().vStack().vStack(0).hStack(0).text(0).string()
+        let maxTemperature = try view.inspect().vStack().vStack(0).hStack(0).text(1).string()
         XCTAssertEqual(imageName, "Rainy")
         XCTAssertEqual(minTemperature, "-10")
         XCTAssertEqual(maxTemperature, "10")
