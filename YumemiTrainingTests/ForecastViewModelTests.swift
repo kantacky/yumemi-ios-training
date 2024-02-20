@@ -15,11 +15,11 @@ final class ForecastViewModelTests: XCTestCase {
     func testReloadSunny() async throws {
         // Given
         let now = Date.now
-        let expected = Weather(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
+        let expected = WeatherInfo(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeather: { _, date in
-                    Weather(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
+                    WeatherInfo(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
                 }
             )
         } operation: {

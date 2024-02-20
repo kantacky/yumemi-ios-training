@@ -10,10 +10,10 @@ import Foundation
 import YumemiWeather
 
 struct YumemiWeatherClient {
-    private(set) var fetchWeather: @Sendable (String, Date) async throws -> Weather?
+    private(set) var fetchWeather: @Sendable (String, Date) async throws -> WeatherInfo
 
     init(
-        fetchWeather: @escaping @Sendable (String, Date) async throws -> Weather?
+        fetchWeather: @escaping @Sendable (String, Date) async throws -> WeatherInfo
     ) {
         self.fetchWeather = fetchWeather
     }
@@ -24,10 +24,9 @@ extension YumemiWeatherClient: DependencyKey {
         fetchWeather: { area, date in
             @Dependency(Encoder.self) var weatherEncoder
             @Dependency(Decoder.self) var weatherDecoder
-
             let request = WeatherRequest(area: area, date: date)
             let response = try YumemiWeather.syncFetchWeather(try weatherEncoder.encodeWeatherRequest(request))
-            return try weatherDecoder.decodeWeatherResponse(response)
+            return try weatherDecoder.decodeWeatherInfoResponse(response)
         }
     )
 }

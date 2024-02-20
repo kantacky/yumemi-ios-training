@@ -13,7 +13,7 @@ import YumemiWeather
 @MainActor
 @Observable final class ForecastViewModel {
     @ObservationIgnored @Dependency(YumemiWeatherClient.self) private var weatherClient
-    private(set) var weather: Weather?
+    private(set) var weather: WeatherInfo?
     private(set) var isLoading = false
     private(set) var alertMessage: String?
     var isAlertPresented: Bool {
