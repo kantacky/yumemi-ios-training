@@ -12,7 +12,6 @@ struct Weather: Equatable, Decodable {
     var weatherCondition: WeatherCondition
     var maxTemperature: Int
     var minTemperature: Int
-}
 
 struct WeatherRequest {
     var area: String

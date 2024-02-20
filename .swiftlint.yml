@@ -1,0 +1,26 @@
+included:
+  - YumemiTraining
+  - YumemiTrainingTests
+excluded:
+analyzer_rules:
+  - capture_variable
+  - explicit_self
+  - typesafe_array_init
+  - unused_declaration
+  - unused_import
+opt_in_rules:
+  - all
+disabled_rules:
+  - attributes
+  - closure_body_length
+  - explicit_acl
+  - explicit_enum_raw_value
+  - explicit_top_level_acl
+  - explicit_type_interface
+  - no_grouping_extension
+  - no_magic_numbers
+  - required_deinit
+  # Deprecated
+  - anyobject_protocol
+  - inert_defer
+  - unused_capture_list

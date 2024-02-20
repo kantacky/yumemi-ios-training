@@ -81,7 +81,7 @@ struct ForecastView: View {
                 Text(message)
             }
         }
-        .onChange(of: scenePhase, { oldValue, newValue in
+        .onChange(of: scenePhase) { oldValue, newValue in
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
@@ -90,7 +90,7 @@ struct ForecastView: View {
             default:
                 return
             }
-        })
+        }
         // MARK: Alternative
         // .onReceive(NotificationCenter.default.publisher(
         //     for: UIApplication.willEnterForegroundNotification

@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 enum WeatherCondition: String, Decodable {
-    case sunny
     case cloudy
     case rainy
+    case sunny
 
     var image: some View {
         switch self {
