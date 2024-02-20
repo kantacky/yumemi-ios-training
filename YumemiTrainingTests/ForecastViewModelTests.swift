@@ -48,7 +48,7 @@ final class ForecastViewModelTests: XCTestCase {
         // After initialized
 
         // Then
-        XCTAssertNil(viewModel.weather)
+        XCTAssertEqual(viewModel.weather, initialWeather)
         XCTAssertNil(viewModel.alertMessage)
         XCTAssertFalse(viewModel.isAlertPresented)
 
@@ -88,7 +88,7 @@ final class ForecastViewModelTests: XCTestCase {
         // After initialized
 
         // Then
-        XCTAssertNil(viewModel.weather)
+        XCTAssertEqual(viewModel.weather, initialWeather)
         XCTAssertNil(viewModel.alertMessage)
         XCTAssertFalse(viewModel.isAlertPresented)
 
@@ -96,7 +96,7 @@ final class ForecastViewModelTests: XCTestCase {
         await viewModel.reload(date: now)
 
         // Then
-        XCTAssertNil(viewModel.weather)
+        XCTAssertEqual(viewModel.weather, initialWeather)
         XCTAssertEqual(viewModel.alertMessage, "Unknown error has occurred.")
         XCTAssertTrue(viewModel.isAlertPresented)
 

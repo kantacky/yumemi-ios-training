@@ -29,6 +29,7 @@
 		F0D6E0AE2B8D864700FD587E /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D6E0AD2B8D864700FD587E /* Decoder.swift */; };
 		F0AEFC1E2B84A16B0090F669 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC1D2B84A16B0090F669 /* WeatherListViewModel.swift */; };
 		F0AEFC202B84A3E50090F669 /* WeatherListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC1F2B84A3E50090F669 /* WeatherListView.swift */; };
+		F0AEFC242B84AC2D0090F669 /* WeatherListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC232B84AC2D0090F669 /* WeatherListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		F0D6E0AD2B8D864700FD587E /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		F0AEFC1D2B84A16B0090F669 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 		F0AEFC1F2B84A3E50090F669 /* WeatherListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListView.swift; sourceTree = "<group>"; };
+		F0AEFC232B84AC2D0090F669 /* WeatherListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */,
+				F0AEFC232B84AC2D0090F669 /* WeatherListViewModelTests.swift */,
+
 			);
 			path = YumemiTrainingTests;
 			sourceTree = "<group>";
