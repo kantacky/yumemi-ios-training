@@ -46,17 +46,8 @@ extension YumemiWeatherClient: DependencyKey {
     )
 }
 
-extension YumemiWeatherClient: TestDependencyKey {
-    static let testValue: Self = .init(
-        fetchWeatherCondition: unimplemented(),
-        fetchThrowingWeatherCondition: unimplemented(),
-        fetchThrowingWeather: unimplemented()
-    )
-}
-
 enum YumemiWeatherClientKey: DependencyKey {
     static let liveValue: YumemiWeatherClient = .liveValue
-    static let testValue: YumemiWeatherClient = .testValue
 }
 
 extension DependencyValues {
