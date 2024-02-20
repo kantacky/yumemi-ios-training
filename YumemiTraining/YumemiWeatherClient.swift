@@ -10,9 +10,9 @@ import Foundation
 import YumemiWeather
 
 struct YumemiWeatherClient {
-    private (set) var fetchWeatherCondition: @Sendable () -> WeatherCondition?
-    private (set) var fetchThrowingWeatherCondition: @Sendable (String) throws -> WeatherCondition?
-    private (set) var fetchThrowingWeather: @Sendable (String, Date) throws -> Weather?
+    private(set) var fetchWeatherCondition: @Sendable () -> WeatherCondition?
+    private(set) var fetchThrowingWeatherCondition: @Sendable (String) throws -> WeatherCondition?
+    private(set) var fetchThrowingWeather: @Sendable (String, Date) throws -> Weather?
 
     init(
         fetchWeatherCondition: @escaping @Sendable () -> WeatherCondition?,
