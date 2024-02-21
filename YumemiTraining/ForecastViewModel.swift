@@ -25,7 +25,6 @@ final class ForecastViewModelImpl: ForecastViewModel {
     @Published private (set) var errorMessage: String?
 
     func reload() {
-        self.weatherCondition = nil
         self.fetchThrowingWeatherCondition(at: "tokyo")
     }
     
