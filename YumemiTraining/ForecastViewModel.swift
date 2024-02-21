@@ -25,7 +25,7 @@ final class ForecastViewModelImpl: ForecastViewModel {
     @Published private (set) var errorMessage: String?
 
     func reload() {
-        self.fetchThrowingWeatherCondition(at: "tokyo")
+        self.fetchWeatherCondition(at: "tokyo")
     }
     
     func dismissAlert() {
@@ -39,10 +39,10 @@ final class ForecastViewModelImpl: ForecastViewModel {
         self.weatherCondition = .init(rawValue: weatherConditionString)
     }
     
-    private func fetchThrowingWeatherCondition(at: String) {
+    private func fetchWeatherCondition(at area: String) {
         do {
-            let weatherConditionString: String = try YumemiWeather.fetchWeatherCondition(at: at)
-            
+            let weatherConditionString: String = try YumemiWeather.fetchWeatherCondition(at: area)
+
             self.weatherCondition = .init(rawValue: weatherConditionString)
         } catch {
             debugPrint(error.localizedDescription)
