@@ -52,10 +52,10 @@ final class ForecastViewModelImpl: ForecastViewModel {
                 self.errorMessage = "Area was invalid."
                 
             case YumemiWeatherError.unknownError:
-                self.errorMessage = "There was an error fetching the weather condition."
-                
+                self.errorMessage = "Something went wrong while retrieving the weather condition."
+
             default:
-                self.errorMessage = "There was an error fetching the weather condition."
+                self.errorMessage = "Something went wrong."
             }
         }
     }
