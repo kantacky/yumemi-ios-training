@@ -8,6 +8,6 @@
 import Foundation
 
 struct Weather: Equatable, Decodable, Hashable {
-    var area: String
-    var info: WeatherInfo
+    let area: String
+    let info: WeatherInfo
 }

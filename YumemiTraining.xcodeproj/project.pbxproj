@@ -30,6 +30,9 @@
 		F0AEFC1E2B84A16B0090F669 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC1D2B84A16B0090F669 /* WeatherListViewModel.swift */; };
 		F0AEFC202B84A3E50090F669 /* WeatherListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC1F2B84A3E50090F669 /* WeatherListView.swift */; };
 		F0AEFC242B84AC2D0090F669 /* WeatherListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC232B84AC2D0090F669 /* WeatherListViewModelTests.swift */; };
+		F0AEFC272B8585730090F669 /* EncodeWeatherRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC262B8585730090F669 /* EncodeWeatherRequestTests.swift */; };
+		F0AEFC292B85861E0090F669 /* DecodeWeatherInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC282B85861E0090F669 /* DecodeWeatherInfoTests.swift */; };
+		F0AEFC2B2B859A180090F669 /* DecodeWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC2A2B859A180090F669 /* DecodeWeatherTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		F0AEFC1D2B84A16B0090F669 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 		F0AEFC1F2B84A3E50090F669 /* WeatherListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListView.swift; sourceTree = "<group>"; };
 		F0AEFC232B84AC2D0090F669 /* WeatherListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModelTests.swift; sourceTree = "<group>"; };
+		F0AEFC262B8585730090F669 /* EncodeWeatherRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeWeatherRequestTests.swift; sourceTree = "<group>"; };
+		F0AEFC282B85861E0090F669 /* DecodeWeatherInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWeatherInfoTests.swift; sourceTree = "<group>"; };
+		F0AEFC2A2B859A180090F669 /* DecodeWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWeatherTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +99,6 @@
 			children = (
 				F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */,
 				F0AEFC232B84AC2D0090F669 /* WeatherListViewModelTests.swift */,
-
 			);
 			path = YumemiTrainingTests;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F048A2822B82F99B008115FA /* ForecastViewModelTests.swift in Sources */,
+				F0AEFC242B84AC2D0090F669 /* WeatherListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
