@@ -12,9 +12,6 @@ struct NewView: View {
 
     var body: some View {
         EmptyView()
-            .onAppear {
-                self.isPresented = true
-            }
             .fullScreenCover(isPresented: $isPresented) {
                 ForecastView(
                     viewModel: ForecastViewModel()

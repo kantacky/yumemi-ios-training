@@ -11,18 +11,23 @@ struct WeatherRequest: Encodable {
     var area: String
     var date: Date
 
-    func jsonString() throws -> String {
+    var jsonString: String? {
+        do {
+            return try self.encode()
+        } catch {
+            return nil
+        }
+    }
+
+    func encode() throws -> String {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
-        encoder.dateEncodingStrategy = .formatted(.iso8601Full)
-        encoder.outputFormatting = .prettyPrinted
-
+        encoder.dateEncodingStrategy = .iso8601
+        encoder.outputFormatting = .sortedKeys
         let data = try encoder.encode(self)
-
         guard let jsonString = String(data: data, encoding: .utf8) else {
             throw WeatherError.encodeRequestError
         }
-
         return jsonString
     }
 }
