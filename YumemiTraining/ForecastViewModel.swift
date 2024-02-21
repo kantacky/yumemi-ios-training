@@ -6,39 +6,36 @@
 //
 
 import Foundation
+import SwiftUI
 import YumemiWeather
 
 @MainActor
 protocol ForecastViewModel: ObservableObject {
-    
+
     var weatherCondition: WeatherCondition? { get }
-    var errorMessage: String? { get }
+    var alert: Alert { get }
+    var isAlertPresented: Bool { get set }
 
     func reload() -> Void
-    func dismissAlert() -> Void
 }
 
 @MainActor
 final class ForecastViewModelImpl: ForecastViewModel {
-    
-    @Published private (set) var weatherCondition: WeatherCondition?
-    @Published private (set) var errorMessage: String?
+
+    @Published private(set) var weatherCondition: WeatherCondition?
+    @Published private(set) var alert = Alert(title: Text("There was an Error Retrieving Weather."))
+    @Published var isAlertPresented = false
 
     func reload() {
         self.fetchWeatherCondition(at: "tokyo")
     }
-    
-    func dismissAlert() {
-        self.errorMessage = nil
-        self.reload()
-    }
-    
+
     private func fetchWeatherCondition() {
         let weatherConditionString: String = YumemiWeather.fetchWeatherCondition()
 
         self.weatherCondition = .init(rawValue: weatherConditionString)
     }
-    
+
     private func fetchWeatherCondition(at area: String) {
         do {
             let weatherConditionString: String = try YumemiWeather.fetchWeatherCondition(at: area)
@@ -49,14 +46,16 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
             switch error {
             case YumemiWeatherError.invalidParameterError:
-                self.errorMessage = "Area was invalid."
-                
+                alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Area is invalid."))
+
             case YumemiWeatherError.unknownError:
-                self.errorMessage = "Something went wrong while retrieving the weather condition."
+                alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Unknown error has occured."))
 
             default:
-                self.errorMessage = "Something went wrong."
+                alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Unexpected error has occured."))
             }
+
+            self.isAlertPresented = true
         }
     }
 }

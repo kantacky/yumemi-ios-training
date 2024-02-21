@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ForecastView<ViewModel: ForecastViewModel>: View {
     @StateObject var viewModel: ViewModel
-
     @State private var buttonsSize: CGSize = .zero
 
     var body: some View {
@@ -88,22 +87,9 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
         .task {
             self.viewModel.reload()
         }
-        .alert(
-            .init("Error"),
-            isPresented: .constant(self.viewModel.errorMessage != nil),
-            actions: {
-                Button {
-                    self.viewModel.dismissAlert()
-                } label: {
-                    Text("OK")
-                }
-            },
-            message: {
-                if let text = self.viewModel.errorMessage {
-                    Text(text)
-                }
-            }
-        )
+        .alert(isPresented: $viewModel.isAlertPresented) {
+            viewModel.alert
+        }
         .task {
             self.viewModel.reload()
         }
