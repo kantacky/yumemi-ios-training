@@ -82,8 +82,8 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
             }
         }
         .onChange(of: self.scenePhase, { oldValue, newValue in
-            switch newValue {
-            case .active:
+            switch (oldValue, newValue) {
+            case (.background, .inactive):
                 self.viewModel.reload()
 
             default:
