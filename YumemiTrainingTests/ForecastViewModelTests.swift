@@ -16,7 +16,7 @@ final class ForecastViewModelTests: XCTestCase {
         let now = Date.now
         let expected = Weather(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
         let viewModel = withDependencies {
-            $0[YumemiWeatherClient.self] = .init(
+            $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeatherCondition: unimplemented(),
                 fetchThrowingWeatherCondition: unimplemented(),
                 fetchThrowingWeather: { _, date in
@@ -35,7 +35,7 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertNil(viewModel.alertMessage)
 
         // When
-        viewModel.reload(at: "tokyo", date: now)
+        viewModel.reload(at: "Tokyo", date: now)
 
         // Then
         XCTAssertEqual(viewModel.weather, expected)

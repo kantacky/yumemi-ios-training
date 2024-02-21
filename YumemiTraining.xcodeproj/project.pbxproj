@@ -126,7 +126,6 @@
 				F0AEFC132B8492880090F669 /* WeatherRequest.swift */,
 				F0AEFC152B8492990090F669 /* WeatherError.swift */,
 				F072BB5C2B7F2C9300A8E86F /* WeatherCondition.swift */,
-				F072BB682B7F5C9600A8E86F /* DateFormatter+.swift */,
 				F072BB4D2B7F09D500A8E86F /* Assets.xcassets */,
 				F072BB4F2B7F09D500A8E86F /* Preview Content */,
 			);

@@ -52,7 +52,6 @@ struct ForecastView: View {
                 )
 
                 Button {
-                    // Reload Action
                     viewModel.reload(at: "tokyo", date: .now)
                 } label: {
                     Text("Reload")
