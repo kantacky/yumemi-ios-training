@@ -32,7 +32,7 @@
 		F0AEFC242B84AC2D0090F669 /* WeatherListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC232B84AC2D0090F669 /* WeatherListViewModelTests.swift */; };
 		F0AEFC272B8585730090F669 /* EncodeWeatherRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC262B8585730090F669 /* EncodeWeatherRequestTests.swift */; };
 		F0AEFC292B85861E0090F669 /* DecodeWeatherInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC282B85861E0090F669 /* DecodeWeatherInfoTests.swift */; };
-		F0AEFC2B2B859A180090F669 /* DecodeWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC2A2B859A180090F669 /* DecodeWeatherTests.swift */; };
+		F0AEFC2B2B859A180090F669 /* DecodeWeatherListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC2A2B859A180090F669 /* DecodeWeatherListTests.swift */; };
 		F0AEFC2D2B859B550090F669 /* EncodeWeatherListRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC2C2B859B550090F669 /* EncodeWeatherListRequestTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +72,7 @@
 		F0AEFC232B84AC2D0090F669 /* WeatherListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModelTests.swift; sourceTree = "<group>"; };
 		F0AEFC262B8585730090F669 /* EncodeWeatherRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeWeatherRequestTests.swift; sourceTree = "<group>"; };
 		F0AEFC282B85861E0090F669 /* DecodeWeatherInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWeatherInfoTests.swift; sourceTree = "<group>"; };
-		F0AEFC2A2B859A180090F669 /* DecodeWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWeatherTests.swift; sourceTree = "<group>"; };
+		F0AEFC2A2B859A180090F669 /* DecodeWeatherListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWeatherListTests.swift; sourceTree = "<group>"; };
 		F0AEFC2C2B859B550090F669 /* EncodeWeatherListRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeWeatherListRequestTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
