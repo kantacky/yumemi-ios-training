@@ -14,7 +14,6 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
     var body: some View {
         VStack(spacing: .init(80)) {
             VStack {
-                // Image
                 Group {
                     if let weather = self.viewModel.weather {
                         weather.weatherCondition.image
@@ -30,46 +29,12 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                     spacing: .zero
                 )
 
-                // Labels
-                HStack(spacing: .zero) {
-                    if let weather = self.viewModel.weather {
-                        Text("\(weather.minTemperature)")
-                            .foregroundStyle(.blue)
-                            .containerRelativeFrame(
-                                .horizontal,
-                                count: 4,
-                                spacing: .zero
-                            )
-
-                        Text("\(weather.maxTemperature)")
-                            .foregroundStyle(.red)
-                            .containerRelativeFrame(
-                                .horizontal,
-                                count: 4,
-                                spacing: .zero
-                            )
-                    } else {
-                        Text("--")
-                            .foregroundStyle(.blue)
-                            .containerRelativeFrame(
-                                .horizontal,
-                                count: 4,
-                                spacing: .zero
-                            )
-
-                        Text("--")
-                            .foregroundStyle(.red)
-                            .containerRelativeFrame(
-                                .horizontal,
-                                count: 4,
-                                spacing: .zero
-                            )
-                    }
-                }
-                .fontDesign(.monospaced)
+                TemeratureView(
+                    maxTemperature: viewModel.weather?.maxTemperature,
+                    minTemperature: viewModel.weather?.minTemperature
+                )
             }
 
-            // Buttons
             HStack(spacing: 0) {
                 Button {
                     // TODO: Close Action
@@ -85,7 +50,6 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 )
 
                 Button {
-                    // Reload Action
                     self.viewModel.reload()
                 } label: {
                     Text("Reload")
