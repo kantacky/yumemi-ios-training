@@ -87,12 +87,19 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
         .onAppear {
             viewModel.reload()
         }
-        .alert(isPresented: $viewModel.isAlertPresented) {
-            Alert(
-                title: Text("There was an Error Retrieving Weather."),
-                message: Text(viewModel.alertMessage ?? "")
-            )
+        .alert(
+            "There was an Error Retrieving Weather.",
+            isPresented: $viewModel.isAlertPresented
+        ) {} message: {
+            switch viewModel.alertState {
+            case .dismissed:
+                EmptyView()
+
+            case .presented(let message):
+                Text(message)
+            }
         }
+
     }
 }
 

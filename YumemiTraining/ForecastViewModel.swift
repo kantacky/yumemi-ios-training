@@ -12,7 +12,7 @@ import YumemiWeather
 protocol ForecastViewModel: ObservableObject {
 
     var weatherCondition: WeatherCondition? { get }
-    var alertMessage: String? { get }
+    var alertState: AlertState { get }
     var isAlertPresented: Bool { get set }
 
     func reload() -> Void
@@ -22,8 +22,24 @@ protocol ForecastViewModel: ObservableObject {
 final class ForecastViewModelImpl: ForecastViewModel {
 
     @Published private(set) var weatherCondition: WeatherCondition?
-    @Published private(set) var alertMessage: String?
-    @Published var isAlertPresented = false
+    @Published private(set) var alertState = AlertState.dismissed
+    var isAlertPresented: Bool {
+        get {
+            switch alertState {
+            case .dismissed:
+                return false
+
+            case .presented:
+                return true
+            }
+        }
+
+        set(newValue) {
+            if newValue == false {
+                alertState = .dismissed
+            }
+        }
+    }
 
     func reload() {
         self.fetchWeatherCondition(at: "tokyo")
@@ -45,13 +61,13 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
             switch error {
             case YumemiWeatherError.invalidParameterError:
-                alertMessage = "Area is invalid."
+                alertState = .presented("Area is invalid.")
 
             case YumemiWeatherError.unknownError:
-                alertMessage = "Unknown error has occured."
+                alertState = .presented("Unknown error has occured.")
 
             default:
-                alertMessage = "Unexpected error has occured."
+                alertState = .presented("Unexpected error has occured.")
             }
 
             self.isAlertPresented = true
