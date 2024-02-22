@@ -11,16 +11,9 @@ struct TemperatureView: View {
     let maxTemperature: Int?
     let minTemperature: Int?
 
-    func string(temperature: Int?) -> String {
-        if let temperature = temperature {
-            return "\(temperature)"
-        }
-        return "--"
-    }
-
     var body: some View {
         HStack(spacing: .zero) {
-            Text(string(temperature: minTemperature))
+            Text("\(minTemperature?.description ?? "-")")
                 .foregroundStyle(.blue)
                 .containerRelativeFrame(
                     .horizontal,
@@ -28,7 +21,7 @@ struct TemperatureView: View {
                     spacing: .zero
                 )
 
-            Text(string(temperature: maxTemperature))
+            Text("\(maxTemperature?.description ?? "-")")
                 .foregroundStyle(.red)
                 .containerRelativeFrame(
                     .horizontal,
