@@ -15,7 +15,7 @@ extension YumemiWeatherError: LocalizedError {
             return "Area was invalid."
 
         case YumemiWeatherError.unknownError:
-            return "Unknown error has occured."
+            return "Unknown error has occurred."
         }
     }
 }
