@@ -12,9 +12,7 @@ import XCTest
 final class DecodeWeatherResponseTests: XCTestCase {
     func testDecodeWeatherResponse() throws {
         // Given
-        guard let now = ISO8601DateFormatter().date(from: "2020-04-01T12:00:00+09:00") else {
-            return
-        }
+        let now = try XCTUnwrap(ISO8601DateFormatter().date(from: "2020-04-01T12:00:00+09:00"))
         let response = """
 {
     "max_temperature": 20,

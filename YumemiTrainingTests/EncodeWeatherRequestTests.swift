@@ -12,9 +12,9 @@ import XCTest
 final class EncodeWeatherRequestTests: XCTestCase {
     func testEncodeWeatherRequest() throws {
         // Given
-        guard let now = ISO8601DateFormatter().date(from: "2020-04-01T12:00:00+09:00") else {
-            return
-        }
+        let formatter = ISO8601DateFormatter()
+        formatter.timeZone = try XCTUnwrap(TimeZone(identifier: "Asia/Tokyo"))
+        let now = try XCTUnwrap(formatter.date(from: "2020-04-01T12:00:00+09:00"))
         let request = WeatherRequest(area: "Tokyo", date: now)
         let expected = "{\"area\":\"Tokyo\",\"date\":\"2020-04-01T03:00:00Z\"}"
 
