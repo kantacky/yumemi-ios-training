@@ -7,21 +7,30 @@
 
 import SwiftUI
 
-struct ForecastView: View {
+struct ForecastView<ViewModel: ForecastViewModel>: View {
+    @StateObject var viewModel: ViewModel
+
     @State private var buttonsSize: CGSize = .zero
 
     var body: some View {
         VStack(spacing: .init(80)) {
             VStack {
                 // Image
-                Color.gray
-                    .aspectRatio(1, contentMode: .fit)
-                    .containerRelativeFrame(
-                        .horizontal,
-                        count: 2,
-                        spacing: .zero
-                    )
-                
+                Group {
+                    if let weatherCondition = self.viewModel.weatherCondition {
+                        weatherCondition.image
+                            .scaledToFit()
+                    } else {
+                        Color.gray
+                    }
+                }
+                .aspectRatio(1, contentMode: .fit)
+                .containerRelativeFrame(
+                    .horizontal,
+                    count: 2,
+                    spacing: .zero
+                )
+
                 // Labels
                 HStack(spacing: .zero) {
                     Text("--")
@@ -31,7 +40,7 @@ struct ForecastView: View {
                             count: 4,
                             spacing: .zero
                         )
-                    
+
                     Text("--")
                         .foregroundStyle(.red)
                         .containerRelativeFrame(
@@ -41,7 +50,7 @@ struct ForecastView: View {
                         )
                 }
             }
-            
+
             // Buttons
             HStack(spacing: 0) {
                 Button {
@@ -56,9 +65,10 @@ struct ForecastView: View {
                     spacing: .zero,
                     alignment: .center
                 )
-                
+
                 Button {
-                    // TODO: Reload Action
+                    // Reload Action
+                    self.viewModel.reload()
                 } label: {
                     Text("Reload")
                 }
@@ -75,9 +85,12 @@ struct ForecastView: View {
             }
         }
         .offset(.init(width: 0, height: (self.buttonsSize.height + 80) / 2))
+        .task {
+            self.viewModel.reload()
+        }
     }
 }
 
 #Preview {
-    ForecastView()
+    ForecastView(viewModel: ForecastViewModelImpl())
 }
