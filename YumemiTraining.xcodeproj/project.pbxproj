@@ -18,15 +18,15 @@
 		F072BB612B7F496500A8E86F /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB602B7F496500A8E86F /* View+.swift */; };
 		F072BB632B7F49F300A8E86F /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */; };
 		F072BB652B7F569200A8E86F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB642B7F569200A8E86F /* Weather.swift */; };
-		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
 		F072BB6B2B7F848600A8E86F /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB6A2B7F848600A8E86F /* NewView.swift */; };
 		F0AEFC022B8447E90090F669 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = F0AEFC012B8447E90090F669 /* Dependencies */; };
 		F0AEFC042B8448B80090F669 /* YumemiWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC032B8448B80090F669 /* YumemiWeatherClient.swift */; };
-		F0AEFC062B844DC30090F669 /* YumemiWeatherError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC052B844DC30090F669 /* YumemiWeatherError+.swift */; };
+		F0AEFC062B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC052B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift */; };
 		F0AEFC142B8492880090F669 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC132B8492880090F669 /* WeatherRequest.swift */; };
 		F0AEFC162B8492990090F669 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC152B8492990090F669 /* WeatherError.swift */; };
 		F0AEFC272B8585730090F669 /* EncodeWeatherRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC262B8585730090F669 /* EncodeWeatherRequestTests.swift */; };
 		F0AEFC292B85861E0090F669 /* DecodeWeatherResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC282B85861E0090F669 /* DecodeWeatherResponseTests.swift */; };
+		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,14 +52,14 @@
 		F072BB602B7F496500A8E86F /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
 		F072BB642B7F569200A8E86F /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		F0AEFC302B85E2270090F669 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		F072BB6A2B7F848600A8E86F /* NewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewView.swift; sourceTree = "<group>"; };
 		F0AEFC032B8448B80090F669 /* YumemiWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiWeatherClient.swift; sourceTree = "<group>"; };
-		F0AEFC052B844DC30090F669 /* YumemiWeatherError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YumemiWeatherError+.swift"; sourceTree = "<group>"; };
+		F0AEFC052B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YumemiWeatherError+LocalizedError.swift"; sourceTree = "<group>"; };
 		F0AEFC132B8492880090F669 /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
 		F0AEFC152B8492990090F669 /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		F0AEFC262B8585730090F669 /* EncodeWeatherRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeWeatherRequestTests.swift; sourceTree = "<group>"; };
 		F0AEFC282B85861E0090F669 /* DecodeWeatherResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWeatherResponseTests.swift; sourceTree = "<group>"; };
+		F0AEFC302B85E2270090F669 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 				F072BB602B7F496500A8E86F /* View+.swift */,
 				F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */,
 				F072BB5A2B7F2B9600A8E86F /* ForecastViewModel.swift */,
-				F0AEFC052B844DC30090F669 /* YumemiWeatherError+.swift */,
+				F0AEFC052B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift */,
 				F0AEFC032B8448B80090F669 /* YumemiWeatherClient.swift */,
 				F072BB642B7F569200A8E86F /* Weather.swift */,
 				F0AEFC132B8492880090F669 /* WeatherRequest.swift */,
@@ -265,7 +265,7 @@
 			files = (
 				F0AEFC142B8492880090F669 /* WeatherRequest.swift in Sources */,
 				F072BB612B7F496500A8E86F /* View+.swift in Sources */,
-				F0AEFC062B844DC30090F669 /* YumemiWeatherError+.swift in Sources */,
+				F0AEFC062B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift in Sources */,
 				F072BB5D2B7F2C9300A8E86F /* WeatherCondition.swift in Sources */,
 				F072BB5B2B7F2B9600A8E86F /* ForecastViewModel.swift in Sources */,
 				F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */,
