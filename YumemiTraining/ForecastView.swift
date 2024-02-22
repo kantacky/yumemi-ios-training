@@ -84,14 +84,14 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
             }
         }
         .offset(.init(width: 0, height: (self.buttonsSize.height + 80) / 2))
-        .task {
-            self.viewModel.reload()
+        .onAppear {
+            viewModel.reload()
         }
         .alert(isPresented: $viewModel.isAlertPresented) {
-            viewModel.alert
-        }
-        .task {
-            self.viewModel.reload()
+            Alert(
+                title: Text("There was an Error Retrieving Weather."),
+                message: Text(viewModel.alertMessage ?? "")
+            )
         }
     }
 }

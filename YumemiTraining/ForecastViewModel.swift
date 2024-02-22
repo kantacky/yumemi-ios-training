@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import SwiftUI
 import YumemiWeather
 
 @MainActor
 protocol ForecastViewModel: ObservableObject {
 
     var weatherCondition: WeatherCondition? { get }
-    var alert: Alert { get }
+    var alertMessage: String? { get }
     var isAlertPresented: Bool { get set }
 
     func reload() -> Void
@@ -23,7 +22,7 @@ protocol ForecastViewModel: ObservableObject {
 final class ForecastViewModelImpl: ForecastViewModel {
 
     @Published private(set) var weatherCondition: WeatherCondition?
-    @Published private(set) var alert = Alert(title: Text("There was an Error Retrieving Weather."))
+    @Published private(set) var alertMessage: String?
     @Published var isAlertPresented = false
 
     func reload() {
@@ -46,13 +45,13 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
             switch error {
             case YumemiWeatherError.invalidParameterError:
-                alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Area is invalid."))
+                alertMessage = "Area is invalid."
 
             case YumemiWeatherError.unknownError:
-                alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Unknown error has occured."))
+                alertMessage = "Unknown error has occured."
 
             default:
-                alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Unexpected error has occured."))
+                alertMessage = "Unexpected error has occured."
             }
 
             self.isAlertPresented = true
