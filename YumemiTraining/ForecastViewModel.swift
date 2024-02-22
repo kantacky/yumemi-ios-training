@@ -20,7 +20,7 @@ protocol ForecastViewModel: ObservableObject {
 
 @MainActor
 final class ForecastViewModelImpl: ForecastViewModel {
-    @Published private (set) var weather: Weather?
+    @Published private(set) var weather: Weather?
     @Published private(set) var weatherCondition: WeatherCondition?
     @Published private(set) var alertMessage: String?
     var isAlertPresented: Bool {
@@ -42,17 +42,15 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
 extension ForecastViewModelImpl {
     private func handleError(_ error: Error) {
-        debugPrint(error.localizedDescription)
-
         switch error {
         case YumemiWeatherError.invalidParameterError:
-            alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Area is invalid."))
+            alertMessage = "Area is invalid."
 
         case YumemiWeatherError.unknownError:
-            alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Unknown error has occured."))
+            alertMessage = "Unknown error has occured."
 
         default:
-            alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Unexpected error has occured."))
+            alertMessage = "Unexpected error has occured."
         }
 
         self.isAlertPresented = true
@@ -81,7 +79,7 @@ extension ForecastViewModelImpl {
             let weatherString: String = try YumemiWeather.fetchWeather(request.jsonString ?? "")
 
             guard let weather: Weather = .from(jsonString: weatherString) else {
-                alert = Alert(title: Text("There was an Error Retrieving Weather."), message: Text("Failed to process server response."))
+                alertMessage = "Failed to process server response."
                 return
             }
 
