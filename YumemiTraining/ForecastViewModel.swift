@@ -12,7 +12,7 @@ import YumemiWeather
 protocol ForecastViewModel: ObservableObject {
 
     var weatherCondition: WeatherCondition? { get }
-    var alertState: AlertState { get }
+    var alertMessage: String? { get }
     var isAlertPresented: Bool { get set }
 
     func reload() -> Void
@@ -22,21 +22,15 @@ protocol ForecastViewModel: ObservableObject {
 final class ForecastViewModelImpl: ForecastViewModel {
 
     @Published private(set) var weatherCondition: WeatherCondition?
-    @Published private(set) var alertState = AlertState.dismissed
+    @Published private(set) var alertMessage: String?
     var isAlertPresented: Bool {
         get {
-            switch alertState {
-            case .dismissed:
-                return false
-
-            case .presented:
-                return true
-            }
+            alertMessage != nil
         }
 
         set(newValue) {
             if newValue == false {
-                alertState = .dismissed
+                alertMessage = nil
             }
         }
     }
@@ -57,20 +51,16 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
             self.weatherCondition = .init(rawValue: weatherConditionString)
         } catch {
-            debugPrint(error.localizedDescription)
-
             switch error {
             case YumemiWeatherError.invalidParameterError:
-                alertState = .presented("Area is invalid.")
+                alertMessage = "Area is invalid."
 
             case YumemiWeatherError.unknownError:
-                alertState = .presented("Unknown error has occured.")
+                alertMessage = "Unknown error has occured."
 
             default:
-                alertState = .presented("Unexpected error has occured.")
+                alertMessage = "Unexpected error has occured."
             }
-
-            self.isAlertPresented = true
         }
     }
 }
