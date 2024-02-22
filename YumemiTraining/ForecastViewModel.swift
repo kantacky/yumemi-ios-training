@@ -47,10 +47,10 @@ extension ForecastViewModelImpl {
             alertMessage = "Area is invalid."
 
         case YumemiWeatherError.unknownError:
-            alertMessage = "Unknown error has occured."
+            alertMessage = "Unknown error has occurred."
 
         default:
-            alertMessage = "Unexpected error has occured."
+            alertMessage = "Unexpected error has occurred."
         }
 
         self.isAlertPresented = true
