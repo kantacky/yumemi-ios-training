@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ForecastView.swift
 //  YumemiTraining
 //
 //  Created by 及川 寛太 on 2024/02/16.
@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ForecastView<ViewModel: ForecastViewModel>: View {
     @StateObject var viewModel: ViewModel
-
     @State private var buttonsSize: CGSize = .zero
 
     var body: some View {
@@ -85,9 +84,18 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
             }
         }
         .offset(.init(width: 0, height: (self.buttonsSize.height + 80) / 2))
-        .task {
-            self.viewModel.reload()
+        .onAppear {
+            viewModel.reload()
         }
+        .alert(
+            "There was an Error Retrieving Weather.",
+            isPresented: $viewModel.isAlertPresented
+        ) {} message: {
+            if let message = viewModel.alertMessage {
+                Text(message)
+            }
+        }
+
     }
 }
 
