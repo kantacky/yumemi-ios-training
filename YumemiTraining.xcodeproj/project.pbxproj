@@ -18,7 +18,7 @@
 		F072BB632B7F49F300A8E86F /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */; };
 		F072BB652B7F569200A8E86F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB642B7F569200A8E86F /* Weather.swift */; };
 		F072BB692B7F5C9600A8E86F /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB682B7F5C9600A8E86F /* DateFormatter+.swift */; };
-		F0AEFC312B85E2270090F669 /* TemeratureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemeratureView.swift */; };
+		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
 		F072BB642B7F569200A8E86F /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		F072BB682B7F5C9600A8E86F /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
-		F0AEFC302B85E2270090F669 /* TemeratureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemeratureView.swift; sourceTree = "<group>"; };
+		F0AEFC302B85E2270090F669 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 			children = (
 				F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */,
 				F072BB4B2B7F09D400A8E86F /* ForecastView.swift */,
-				F0AEFC302B85E2270090F669 /* TemeratureView.swift */,
+				F0AEFC302B85E2270090F669 /* TemperatureView.swift */,
 				F072BB602B7F496500A8E86F /* View+.swift */,
 				F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */,
 				F072BB5A2B7F2B9600A8E86F /* ForecastViewModel.swift */,
@@ -172,7 +172,7 @@
 				F072BB5B2B7F2B9600A8E86F /* ForecastViewModel.swift in Sources */,
 				F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */,
 				F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */,
-				F0AEFC312B85E2270090F669 /* TemeratureView.swift in Sources */,
+				F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */,
 				F072BB632B7F49F300A8E86F /* SizePreferenceKey.swift in Sources */,
 				F072BB652B7F569200A8E86F /* Weather.swift in Sources */,
 			);

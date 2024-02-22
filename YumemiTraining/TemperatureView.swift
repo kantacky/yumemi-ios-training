@@ -1,5 +1,5 @@
 //
-//  TemeratureView.swift
+//  TemperatureView.swift
 //  YumemiTraining
 //
 //  Created by 及川 寛太 on 2024/02/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TemeratureView: View {
+struct TemperatureView: View {
     let maxTemperature: Int?
     let minTemperature: Int?
 
@@ -42,8 +42,8 @@ struct TemeratureView: View {
 
 #Preview {
     VStack {
-        TemeratureView(maxTemperature: 12, minTemperature: 7)
+        TemperatureView(maxTemperature: 12, minTemperature: 7)
 
-        TemeratureView(maxTemperature: nil, minTemperature: nil)
+        TemperatureView(maxTemperature: nil, minTemperature: nil)
     }
 }

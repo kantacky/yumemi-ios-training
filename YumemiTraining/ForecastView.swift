@@ -29,7 +29,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                     spacing: .zero
                 )
 
-                TemeratureView(
+                TemperatureView(
                     maxTemperature: viewModel.weather?.maxTemperature,
                     minTemperature: viewModel.weather?.minTemperature
                 )
