@@ -25,7 +25,7 @@ extension WeatherRequest: Encodable {
     var jsonString: String? {
         let encoder: JSONEncoder = .init()
         encoder.keyEncodingStrategy = .convertToSnakeCase
-        encoder.dateEncodingStrategy = .formatted(.iso8601Full)
+        encoder.dateEncodingStrategy = .iso8601
         encoder.outputFormatting = .prettyPrinted
 
         guard
@@ -57,7 +57,7 @@ extension WeatherResponse: Decodable {
     static func from(data: Data) -> Self? {
         let decoder: JSONDecoder = .init()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .formatted(.iso8601Full)
+        decoder.dateDecodingStrategy = .iso8601
 
         guard let weather: Self = try? decoder.decode(Weather.self, from: data) else {
             return nil
