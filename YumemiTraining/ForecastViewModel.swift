@@ -10,7 +10,7 @@ import YumemiWeather
 
 @MainActor
 protocol ForecastViewModel: ObservableObject {
-
+    var weather: Weather? { get }
     var weatherCondition: WeatherCondition? { get }
     var alertMessage: String? { get }
     var isAlertPresented: Bool { get set }
@@ -20,7 +20,7 @@ protocol ForecastViewModel: ObservableObject {
 
 @MainActor
 final class ForecastViewModelImpl: ForecastViewModel {
-
+    @Published private(set) var weather: Weather?
     @Published private(set) var weatherCondition: WeatherCondition?
     @Published private(set) var alertMessage: String?
     var isAlertPresented: Bool {
@@ -36,9 +36,28 @@ final class ForecastViewModelImpl: ForecastViewModel {
     }
 
     func reload() {
-        self.fetchWeatherCondition(at: "tokyo")
+        self.fetchWeather(request: .init(area: "tokyo", date: .now))
     }
+}
 
+extension ForecastViewModelImpl {
+    private func handleError(_ error: Error) {
+        switch error {
+        case YumemiWeatherError.invalidParameterError:
+            alertMessage = "Area is invalid."
+
+        case YumemiWeatherError.unknownError:
+            alertMessage = "Unknown error has occurred."
+
+        default:
+            alertMessage = "Unexpected error has occurred."
+        }
+
+        self.isAlertPresented = true
+    }
+}
+
+extension ForecastViewModelImpl {
     private func fetchWeatherCondition() {
         let weatherConditionString: String = YumemiWeather.fetchWeatherCondition()
 
@@ -51,16 +70,27 @@ final class ForecastViewModelImpl: ForecastViewModel {
 
             self.weatherCondition = .init(rawValue: weatherConditionString)
         } catch {
-            switch error {
-            case YumemiWeatherError.invalidParameterError:
-                alertMessage = "Area is invalid."
+            self.handleError(error)
+        }
+    }
 
-            case YumemiWeatherError.unknownError:
-                alertMessage = "Unknown error has occured."
-
-            default:
-                alertMessage = "Unexpected error has occured."
+    private func fetchWeather(request: WeatherRequest) {
+        do {
+            guard let requestString = request.jsonString else {
+                alertMessage = "Failed to process request."
+                return
             }
+
+            let weatherString = try YumemiWeather.fetchWeather(requestString)
+
+            guard let weather = Weather(jsonString: weatherString) else {
+                alertMessage = "Failed to process server response."
+                return
+            }
+
+            self.weather = weather
+        } catch {
+            self.handleError(error)
         }
     }
 }
