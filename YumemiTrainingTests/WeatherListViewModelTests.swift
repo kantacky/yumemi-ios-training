@@ -66,13 +66,13 @@ final class WeatherListViewModelTests: XCTestCase {
 
         // Then
         XCTAssertTrue(viewModel.weatherList.isEmpty)
-        XCTAssertNil(viewModel.errorMessage)
+        XCTAssertNil(viewModel.alertMessage)
 
         // When
         await viewModel.reload(areas: ["Sapporo", "Tokyo"], date: now)
 
         // Then
         XCTAssertEqual(viewModel.weatherList, expected)
-        XCTAssertNil(viewModel.errorMessage)
+        XCTAssertNil(viewModel.alertMessage)
     }
 }
