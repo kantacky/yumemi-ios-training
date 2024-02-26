@@ -33,15 +33,6 @@ struct TemperatureView: View {
     }
 }
 
-private extension TemperatureView {
-    func string(temperature: Int?) -> String {
-        if let temperature {
-            return "\(temperature)"
-        }
-        return "--"
-    }
-}
-
 #Preview {
     VStack {
         TemperatureView(maxTemperature: 12, minTemperature: 7)
