@@ -68,9 +68,10 @@ struct WeatherListView: View {
                 date: .now
             )
         }
-        .onChange(of: scenePhase) { _, newValue in
-            switch newValue {
-            case .active:
+        .onChange(of: scenePhase) { oldValue, newValue in
+            switch (oldValue, newValue) {
+            case (.background, .inactive):
+                viewModel.isAlertPresented = false
                 Task {
                     await viewModel.reload(areas: Area.allCases.map { $0.rawValue }, date: .now)
                 }
