@@ -45,7 +45,10 @@ struct WeatherListView: View {
                     .navigationTitle(weather.area)
             }
             .refreshable {
-                await viewModel.reload(areas: Area.allCases.map { $0.rawValue }, date: .now)
+                await viewModel.reload(
+                    areas: Area.allCases.map(\.rawValue),
+                    date: .now
+                )
             }
         }
         .alert(
@@ -63,7 +66,10 @@ struct WeatherListView: View {
             }
         }
         .task {
-            await viewModel.reload(areas: Area.allCases.map { $0.rawValue }, date: .now)
+            await viewModel.reload(
+                areas: Area.allCases.map(\.rawValue),
+                date: .now
+            )
         }
         .onChange(of: scenePhase) { _, newValue in
             switch newValue {
