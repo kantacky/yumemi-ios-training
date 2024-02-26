@@ -58,7 +58,6 @@ struct ForecastView: View {
                     .offset(y: 100)
             }
         }
-        .task { await reload() }
         .alert(
             "There was an Error Retrieving Weather.",
             isPresented: $viewModel.isAlertPresented,

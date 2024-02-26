@@ -14,7 +14,7 @@ struct WeatherListView: View {
 
     var body: some View {
         NavigationStack {
-            if viewModel.isLoading {
+            if viewModel.weatherList.isEmpty && viewModel.isLoading {
                 ProgressView()
             } else {
                 List(viewModel.weatherList, id: \.self) { weather in
