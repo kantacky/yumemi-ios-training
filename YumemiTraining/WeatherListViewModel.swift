@@ -14,7 +14,18 @@ final class WeatherListViewModel: ObservableObject {
 
     @Published private(set) var weatherList: [Weather] = []
     @Published private(set) var isLoading = false
-    @Published private(set) var errorMessage: String?
+    @Published private(set) var alertMessage: String?
+    var isAlertPresented: Bool {
+        get {
+            alertMessage != nil
+        }
+
+        set(newValue) {
+            if newValue == false {
+                alertMessage = nil
+            }
+        }
+    }
 
     func reload(areas: [String], date: Date) async {
         self.isLoading = true
@@ -24,11 +35,11 @@ final class WeatherListViewModel: ObservableObject {
         do {
             weatherList = try await weatherClient.fetchWeatherList(areas, date)
         } catch {
-            errorMessage = error.localizedDescription
+            alertMessage = error.localizedDescription
         }
     }
 
     func dismissAlert() {
-        errorMessage = nil
+        alertMessage = nil
     }
 }

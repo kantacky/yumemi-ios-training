@@ -52,17 +52,11 @@ struct WeatherListView: View {
             }
         }
         .alert(
-            .init("Error"),
-            isPresented: .constant(viewModel.errorMessage != nil)
-        ) {
-            Button {
-                viewModel.dismissAlert()
-            } label: {
-                Text("OK")
-            }
-        } message: {
-            if let text = viewModel.errorMessage {
-                Text(text)
+            "There was an Error Retrieving Weather.",
+            isPresented: $viewModel.isAlertPresented
+        ) {} message: {
+            if let message = viewModel.alertMessage {
+                Text(message)
             }
         }
         .task {
