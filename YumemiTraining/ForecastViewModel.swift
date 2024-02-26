@@ -78,7 +78,7 @@ extension ForecastViewModelImpl {
         do {
             let weatherString: String = try YumemiWeather.fetchWeather(request.jsonString ?? "")
 
-            guard let weather: Weather = .from(jsonString: weatherString) else {
+            guard let weather = Weather(jsonString: weatherString) else {
                 alertMessage = "Failed to process server response."
                 return
             }

@@ -43,18 +43,18 @@ typealias WeatherResponse = Weather
 
 extension WeatherResponse: Decodable {
 
-    static func from(jsonString: String) -> Self? {
+    init?(jsonString: String) {
         guard
             let data: Data = jsonString.data(using: .utf8),
-            let weather: Self = self.from(data: data)
+            let weather: Self = .init(data: data)
         else {
             return nil
         }
 
-        return weather
+        self = weather
     }
 
-    static func from(data: Data) -> Self? {
+    init?(data: Data) {
         let decoder: JSONDecoder = .init()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
@@ -63,6 +63,6 @@ extension WeatherResponse: Decodable {
             return nil
         }
 
-        return weather
+        self = weather
     }
 }
