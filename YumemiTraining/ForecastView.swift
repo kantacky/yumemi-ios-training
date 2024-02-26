@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ForecastView<ViewModel: ForecastViewModel>: View {
+    @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ViewModel
     @State private var buttonsSize: CGSize = .zero
 
@@ -37,7 +38,8 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
 
             HStack(spacing: 0) {
                 Button {
-                    // TODO: Close Action
+                    // Close Action
+                    self.dismiss()
                 } label: {
                     Text("Close")
                 }
@@ -78,7 +80,6 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 Text(message)
             }
         }
-
     }
 }
 

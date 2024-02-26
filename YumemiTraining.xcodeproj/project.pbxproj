@@ -18,6 +18,7 @@
 		F072BB632B7F49F300A8E86F /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */; };
 		F072BB652B7F569200A8E86F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB642B7F569200A8E86F /* Weather.swift */; };
 		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
+		F072BB6B2B7F848600A8E86F /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB6A2B7F848600A8E86F /* NewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
 		F072BB642B7F569200A8E86F /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		F0AEFC302B85E2270090F669 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
+		F072BB6A2B7F848600A8E86F /* NewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */,
+				F072BB6A2B7F848600A8E86F /* NewView.swift */,
 				F072BB4B2B7F09D400A8E86F /* ForecastView.swift */,
 				F0AEFC302B85E2270090F669 /* TemperatureView.swift */,
 				F072BB602B7F496500A8E86F /* View+.swift */,
@@ -167,6 +170,7 @@
 				F072BB5D2B7F2C9300A8E86F /* WeatherCondition.swift in Sources */,
 				F072BB5B2B7F2B9600A8E86F /* ForecastViewModel.swift in Sources */,
 				F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */,
+				F072BB6B2B7F848600A8E86F /* NewView.swift in Sources */,
 				F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */,
 				F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */,
 				F072BB632B7F49F300A8E86F /* SizePreferenceKey.swift in Sources */,

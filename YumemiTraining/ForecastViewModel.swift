@@ -11,7 +11,6 @@ import YumemiWeather
 @MainActor
 protocol ForecastViewModel: ObservableObject {
     var weather: Weather? { get }
-    var weatherCondition: WeatherCondition? { get }
     var alertMessage: String? { get }
     var isAlertPresented: Bool { get set }
 
