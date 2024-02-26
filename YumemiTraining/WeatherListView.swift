@@ -14,51 +14,54 @@ struct WeatherListView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewModel.weatherList, id: \.self) { weather in
-                NavigationLink(value: weather) {
-                    HStack {
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                List(viewModel.weatherList, id: \.self) { weather in
+                    NavigationLink(value: weather) {
                         HStack {
-                            weather.info.weatherCondition.image
-                                .scaledToFit()
-                                .aspectRatio(1, contentMode: .fit)
-                                .frame(height: 24)
+                            HStack {
+                                weather.info.weatherCondition.image
+                                    .scaledToFit()
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .frame(height: 24)
 
-                            Text(weather.area)
+                                Text(weather.area)
+                            }
+
+                            Spacer()
+
+                            HStack {
+                                Text("\(weather.info.minTemperature)")
+                                    .foregroundStyle(.blue)
+                                Text("/")
+                                    .foregroundStyle(.secondary)
+                                Text("\(weather.info.maxTemperature)")
+                                    .foregroundStyle(.red)
+                            }
+                            .fontDesign(.monospaced)
                         }
-
-                        Spacer()
-
-                        HStack {
-                            Text("\(weather.info.minTemperature)")
-                                .foregroundStyle(.blue)
-                            Text("/")
-                                .foregroundStyle(.secondary)
-                            Text("\(weather.info.maxTemperature)")
-                                .foregroundStyle(.red)
-                        }
-                        .fontDesign(.monospaced)
                     }
                 }
-            }
-            .navigationDestination(for: Weather.self) { weather in
-                ForecastView(viewModel: ForecastViewModel(weather: weather))
-                    .navigationTitle(weather.area)
-            }
-            .refreshable {
-                await viewModel.reload(
-                    areas: Area.allCases.map(\.rawValue),
-                    date: .now
-                )
+                .navigationDestination(for: Weather.self) { weather in
+                    ForecastView(viewModel: ForecastViewModel(weather: weather))
+                        .navigationTitle(weather.area)
+                }
+                .refreshable {
+                    await viewModel.reload(
+                        areas: Area.allCases.map(\.rawValue),
+                        date: .now
+                    )
+                }
             }
         }
         .alert(
             "There was an Error Retrieving Weather.",
-            isPresented: $viewModel.isAlertPresented
-        ) {} message: {
-            if let message = viewModel.alertMessage {
-                Text(message)
-            }
-        }
+            isPresented: $viewModel.isAlertPresented,
+            presenting: viewModel.alertMessage,
+            actions: { _ in },
+            message: Text.init
+        )
         .task {
             await viewModel.reload(
                 areas: Area.allCases.map(\.rawValue),

@@ -11,7 +11,6 @@ import Foundation
 @MainActor
 final class WeatherListViewModel: ObservableObject {
     @Dependency(YumemiWeatherClient.self) var weatherClient
-
     @Published private(set) var weatherList: [Weather] = []
     @Published private(set) var isLoading = false
     @Published private(set) var alertMessage: String?
