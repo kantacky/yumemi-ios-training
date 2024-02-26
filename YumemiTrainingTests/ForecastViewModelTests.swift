@@ -23,6 +23,9 @@ final class ForecastViewModelTests: XCTestCase {
                 fetchThrowingWeatherCondition: unimplemented(),
                 fetchThrowingWeather: { _, date in
                     Weather(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
+                },
+                fetchSyncThrowingWeather: { _, date in
+                    Weather(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
                 }
             )
         } operation: {
@@ -39,7 +42,7 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isAlertPresented)
 
         // When
-        await viewModel.reload(area: "tokyo", date: now)
+        await viewModel.reload(at: "Tokyo", date: now)
 
         // Then
         XCTAssertEqual(viewModel.weather, expected)
@@ -47,7 +50,7 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isAlertPresented)
     }
 
-    func testReloadFailure() {
+    func testReloadFailure() async throws {
         // Given
         let now = Date.now
         // swiftlint:disable trailing_closure
@@ -56,6 +59,9 @@ final class ForecastViewModelTests: XCTestCase {
                 fetchWeatherCondition: unimplemented(),
                 fetchThrowingWeatherCondition: unimplemented(),
                 fetchThrowingWeather: { _, _ in
+                    throw YumemiWeatherError.unknownError
+                },
+                fetchSyncThrowingWeather: { _, _ in
                     throw YumemiWeatherError.unknownError
                 }
             )
@@ -73,7 +79,7 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isAlertPresented)
 
         // When
-        viewModel.reload(at: "Tokyo", date: now)
+        await viewModel.reload(at: "Tokyo", date: now)
 
         // Then
         XCTAssertNil(viewModel.weather)
