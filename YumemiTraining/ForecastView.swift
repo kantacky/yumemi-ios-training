@@ -61,12 +61,11 @@ struct ForecastView: View {
         .task { await reload() }
         .alert(
             "There was an Error Retrieving Weather.",
-            isPresented: $viewModel.isAlertPresented
-        ) {} message: {
-            if let message = viewModel.alertMessage {
-                Text(message)
-            }
-        }
+            isPresented: $viewModel.isAlertPresented,
+            presenting: viewModel.alertMessage,
+            actions: { _ in },
+            message: Text.init
+        )
         .onChange(of: scenePhase) { oldValue, newValue in
             switch (oldValue, newValue) {
             case (.background, .inactive):
