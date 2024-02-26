@@ -15,10 +15,7 @@ final class WeatherListViewModel: ObservableObject {
     @Published private(set) var isLoading = false
     @Published private(set) var alertMessage: String?
     var isAlertPresented: Bool {
-        get {
-            alertMessage != nil
-        }
-
+        get { alertMessage != nil }
         set(newValue) {
             if newValue == false {
                 alertMessage = nil
