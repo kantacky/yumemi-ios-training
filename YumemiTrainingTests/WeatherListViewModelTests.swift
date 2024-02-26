@@ -38,23 +38,17 @@ final class WeatherListViewModelTests: XCTestCase {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeather: unimplemented(),
                 fetchWeatherList: { areas, date in
-                    var weathers: [Weather] = []
-
-                    areas.enumerated().forEach { index, area in
-                        weathers.append(
-                            Weather(
-                                area: area,
-                                info: WeatherInfo(
-                                    date: date,
-                                    weatherCondition: .allCases[index % 3],
-                                    maxTemperature: index * 5 + 10,
-                                    minTemperature: index * 5 - 10
-                                )
+                    areas.enumerated().map { index, area in
+                        Weather(
+                            area: area,
+                            info: WeatherInfo(
+                                date: date,
+                                weatherCondition: .allCases[index % 3],
+                                maxTemperature: index * 5 + 10,
+                                minTemperature: index * 5 - 10
                             )
                         )
                     }
-
-                    return weathers
                 }
             )
         } operation: {
