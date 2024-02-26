@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ForecastView<ViewModel: ForecastViewModel>: View {
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ViewModel
     @State private var buttonsSize: CGSize = .zero
@@ -80,6 +81,21 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 Text(message)
             }
         }
+        .onChange(of: self.scenePhase, { oldValue, newValue in
+            switch (oldValue, newValue) {
+            case (.background, .inactive):
+                viewModel.isAlertPresented = false
+                viewModel.reload()
+
+            default:
+                return
+            }
+        })
+//        .onReceive(NotificationCenter.default.publisher(
+//            for: UIApplication.willEnterForegroundNotification
+//        )) { _ in
+//            self.viewModel.reload()
+//        }
     }
 }
 
