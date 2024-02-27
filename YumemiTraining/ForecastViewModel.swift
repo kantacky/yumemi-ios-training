@@ -33,7 +33,7 @@ import YumemiWeather
             self.isLoading = false
         }
         do {
-            weather = try await weatherClient.fetchSyncThrowingWeather(area, date)
+            weather = try await weatherClient.fetchWeather(area, date)
         } catch {
             alertMessage = error.localizedDescription
         }

@@ -38,9 +38,6 @@ struct ForecastView: View {
                         minTemperature: viewModel.weather?.minTemperature
                     )
                 }
-                .readSize { size in
-                    weatherCardSize = size
-                }
 
                 HStack(spacing: 0) {
                     Button {
@@ -57,9 +54,7 @@ struct ForecastView: View {
                     )
 
                     Button {
-                        Task {
-                            await viewModel.reload(at: "tokyo", date: .now)
-                        }
+                        Task { await viewModel.reload(at: "tokyo", date: .now) }
                     } label: {
                         Text("Reload")
                     }
@@ -71,20 +66,14 @@ struct ForecastView: View {
                         alignment: .center
                     )
                 }
-                .readSize { size in
-                    buttonsSize = size
-                }
             }
-            .offset(.init(width: 0, height: (buttonsSize.height + 80) / 2))
 
             if viewModel.isLoading {
                 ProgressView()
-                    .offset(.init(width: 0, height: (weatherCardSize.height + 80) / 2))
+                    .offset(y: 100)
             }
         }
-        .task {
-            await viewModel.reload(at: "tokyo", date: .now)
-        }
+        .task { await viewModel.reload(at: "tokyo", date: .now) }
         .alert(
             "There was an Error Retrieving Weather.",
             isPresented: $viewModel.isAlertPresented
@@ -97,9 +86,7 @@ struct ForecastView: View {
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
-                Task {
-                    await viewModel.reload(at: "tokyo", date: .now)
-                }
+                Task { await viewModel.reload(at: "tokyo", date: .now) }
 
             default:
                 return

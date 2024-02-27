@@ -18,12 +18,7 @@ final class ForecastViewModelTests: XCTestCase {
         let expected = Weather(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
-                fetchWeatherCondition: unimplemented(),
-                fetchThrowingWeatherCondition: unimplemented(),
-                fetchThrowingWeather: { _, date in
-                    Weather(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
-                },
-                fetchSyncThrowingWeather: { _, date in
+                fetchWeather: { _, date in
                     Weather(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
                 }
             )
@@ -53,12 +48,7 @@ final class ForecastViewModelTests: XCTestCase {
         let now = Date.now
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
-                fetchWeatherCondition: unimplemented(),
-                fetchThrowingWeatherCondition: unimplemented(),
-                fetchThrowingWeather: { _, _ in
-                    throw YumemiWeatherError.unknownError
-                },
-                fetchSyncThrowingWeather: { _, _ in
+                fetchWeather: { _, _ in
                     throw YumemiWeatherError.unknownError
                 }
             )
