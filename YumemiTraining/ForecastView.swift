@@ -10,7 +10,7 @@ import SwiftUI
 struct ForecastView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var viewModel: ForecastViewModel
+    @Bindable var viewModel: ForecastViewModel
     @State private var weatherCardSize = CGSize.zero
     @State private var buttonsSize = CGSize.zero
 
