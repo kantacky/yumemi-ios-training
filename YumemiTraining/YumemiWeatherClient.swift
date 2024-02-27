@@ -11,11 +11,11 @@ import YumemiWeather
 
 struct YumemiWeatherClient {
     private(set) var fetchWeather: @Sendable (String, Date) async throws -> WeatherInfo
-    private(set) var fetchWeatherList: @Sendable ([String], Date) async throws -> [Weather]
+    private(set) var fetchWeatherList: @Sendable (Date) async throws -> [Weather]
 
     init(
         fetchWeather: @escaping @Sendable (String, Date) async throws -> WeatherInfo,
-        fetchWeatherList: @escaping @Sendable ([String], Date) async throws -> [Weather]
+        fetchWeatherList: @escaping @Sendable (Date) async throws -> [Weather]
     ) {
         self.fetchWeather = fetchWeather
         self.fetchWeatherList = fetchWeatherList
@@ -32,9 +32,10 @@ extension YumemiWeatherClient: DependencyKey {
             let response = try await YumemiWeather.asyncFetchWeather(encodedRequest)
             return try weatherDecoder.decodeWeatherInfoResponse(response)
         },
-        fetchWeatherList: { areas, date in
+        fetchWeatherList: { date in
             @Dependency(Encoder.self) var weatherEncoder
             @Dependency(Decoder.self) var weatherDecoder
+            let areas = Area.allCases.map(\.rawValue)
             let request = WeatherListRequest(areas: areas, date: date)
             let encodedRequest = try weatherEncoder.encodeWeatherListRequest(request)
             let response = try await YumemiWeather.asyncFetchWeatherList(encodedRequest)

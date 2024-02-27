@@ -37,18 +37,27 @@ final class WeatherListViewModelTests: XCTestCase {
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeather: unimplemented(),
-                fetchWeatherList: { areas, date in
-                    areas.enumerated().map { index, area in
+                fetchWeatherList: { date in
+                    [
                         Weather(
-                            area: area,
+                            area: "Sapporo",
                             info: WeatherInfo(
                                 date: date,
-                                weatherCondition: .allCases[index % 3],
-                                maxTemperature: index * 5 + 10,
-                                minTemperature: index * 5 - 10
+                                weatherCondition: .cloudy,
+                                maxTemperature: 10,
+                                minTemperature: -10
+                            )
+                        ),
+                        Weather(
+                            area: "Tokyo",
+                            info: WeatherInfo(
+                                date: date,
+                                weatherCondition: .rainy,
+                                maxTemperature: 15,
+                                minTemperature: -5
                             )
                         )
-                    }
+                    ]
                 }
             )
         } operation: {
@@ -63,7 +72,7 @@ final class WeatherListViewModelTests: XCTestCase {
         XCTAssertNil(viewModel.alertMessage)
 
         // When
-        await viewModel.reload(areas: ["Sapporo", "Tokyo"], date: now)
+        await viewModel.reload(date: now)
 
         // Then
         XCTAssertEqual(viewModel.weatherList, expected)

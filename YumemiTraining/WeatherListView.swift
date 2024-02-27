@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import YumemiWeather
 
 struct WeatherListView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject var viewModel: WeatherListViewModel
+    @Bindable var viewModel: WeatherListViewModel
 
     var body: some View {
         NavigationStack {
@@ -47,12 +46,7 @@ struct WeatherListView: View {
                     ForecastView(viewModel: ForecastViewModel(weather: weather))
                         .navigationTitle(weather.area)
                 }
-                .refreshable {
-                    await viewModel.reload(
-                        areas: Area.allCases.map(\.rawValue),
-                        date: .now
-                    )
-                }
+                .refreshable { await viewModel.reload(date: .now) }
             }
         }
         .alert(
@@ -62,19 +56,12 @@ struct WeatherListView: View {
             actions: { _ in },
             message: Text.init
         )
-        .task {
-            await viewModel.reload(
-                areas: Area.allCases.map(\.rawValue),
-                date: .now
-            )
-        }
+        .task { await viewModel.reload(date: .now) }
         .onChange(of: scenePhase) { oldValue, newValue in
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
-                Task {
-                    await viewModel.reload(areas: Area.allCases.map { $0.rawValue }, date: .now)
-                }
+                Task { await viewModel.reload(date: .now) }
 
             default:
                 return

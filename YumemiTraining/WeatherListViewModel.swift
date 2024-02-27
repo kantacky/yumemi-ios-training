@@ -9,11 +9,11 @@ import Dependencies
 import Foundation
 
 @MainActor
-final class WeatherListViewModel: ObservableObject {
-    @Dependency(YumemiWeatherClient.self) var weatherClient
-    @Published private(set) var weatherList: [Weather] = []
-    @Published private(set) var isLoading = false
-    @Published private(set) var alertMessage: String?
+@Observable final class WeatherListViewModel {
+    @ObservationIgnored @Dependency(YumemiWeatherClient.self) var weatherClient
+    private(set) var weatherList: [Weather] = []
+    private(set) var isLoading = false
+    private(set) var alertMessage: String?
     var isAlertPresented: Bool {
         get { alertMessage != nil }
         set(newValue) {
@@ -23,13 +23,13 @@ final class WeatherListViewModel: ObservableObject {
         }
     }
 
-    func reload(areas: [String], date: Date) async {
+    func reload(date: Date) async {
         self.isLoading = true
         defer {
             self.isLoading = false
         }
         do {
-            weatherList = try await weatherClient.fetchWeatherList(areas, date)
+            weatherList = try await weatherClient.fetchWeatherList(date)
         } catch {
             alertMessage = error.localizedDescription
         }
