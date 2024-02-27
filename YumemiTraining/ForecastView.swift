@@ -15,63 +15,73 @@ struct ForecastView: View {
     @State private var buttonsSize = CGSize.zero
 
     var body: some View {
-        VStack(spacing: 80) {
-            VStack {
-                Group {
-                    if let weather = viewModel.weather {
-                        weather.weatherCondition.image
-                            .scaledToFit()
-                    } else {
-                        Color.gray
+        ZStack {
+            VStack(spacing: 80) {
+                VStack {
+                    Group {
+                        if let weather = viewModel.weather {
+                            weather.weatherCondition.image
+                                .scaledToFit()
+                        } else {
+                            Color.clear
+                        }
                     }
+                    .aspectRatio(1, contentMode: .fit)
+                    .containerRelativeFrame(
+                        .horizontal,
+                        count: 2,
+                        spacing: .zero
+                    )
+
+                    TemperatureView(
+                        maxTemperature: viewModel.weather?.maxTemperature,
+                        minTemperature: viewModel.weather?.minTemperature
+                    )
                 }
-                .aspectRatio(1, contentMode: .fit)
-                .containerRelativeFrame(
-                    .horizontal,
-                    count: 2,
-                    spacing: .zero
-                )
-
-                TemperatureView(
-                    maxTemperature: viewModel.weather?.maxTemperature,
-                    minTemperature: viewModel.weather?.minTemperature
-                )
-            }
-
-            HStack(spacing: 0) {
-                Button {
-                    dismiss()
-                } label: {
-                    Text("Close")
+                .readSize { size in
+                    weatherCardSize = size
                 }
-                .containerRelativeFrame(
-                    .horizontal,
-                    count: 4,
-                    span: 1,
-                    spacing: .zero,
-                    alignment: .center
-                )
 
-                Button {
-                    Task {
-                        await viewModel.reload(at: "tokyo", date: .now)
+                HStack(spacing: 0) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Close")
                     }
-                } label: {
-                    Text("Reload")
+                    .containerRelativeFrame(
+                        .horizontal,
+                        count: 4,
+                        span: 1,
+                        spacing: .zero,
+                        alignment: .center
+                    )
+
+                    Button {
+                        Task {
+                            await viewModel.reload(at: "tokyo", date: .now)
+                        }
+                    } label: {
+                        Text("Reload")
+                    }
+                    .containerRelativeFrame(
+                        .horizontal,
+                        count: 4,
+                        span: 1,
+                        spacing: .zero,
+                        alignment: .center
+                    )
                 }
-                .containerRelativeFrame(
-                    .horizontal,
-                    count: 4,
-                    span: 1,
-                    spacing: .zero,
-                    alignment: .center
-                )
+                .readSize { size in
+                    buttonsSize = size
+                }
             }
-            .readSize { size in
-                buttonsSize = size
+            .offset(.init(width: 0, height: (buttonsSize.height + 80) / 2))
+
+            if viewModel.isLoading {
+                ProgressView()
+                    .offset(.init(width: 0, height: (weatherCardSize.height + 80) / 2))
             }
         }
-        .offset(.init(width: 0, height: (buttonsSize.height + 80) / 2))
         .task {
             await viewModel.reload(at: "tokyo", date: .now)
         }
