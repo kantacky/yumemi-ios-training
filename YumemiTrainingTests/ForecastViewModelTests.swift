@@ -6,9 +6,9 @@
 //
 
 import Dependencies
-import YumemiWeather
 import XCTest
 @testable import YumemiTraining
+import YumemiWeather
 
 @MainActor
 final class ForecastViewModelTests: XCTestCase {
@@ -16,6 +16,7 @@ final class ForecastViewModelTests: XCTestCase {
         // Given
         let now = Date.now
         let expected = Weather(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
+        // swiftlint:disable trailing_closure
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeatherCondition: unimplemented(),
@@ -27,6 +28,7 @@ final class ForecastViewModelTests: XCTestCase {
         } operation: {
             ForecastViewModel()
         }
+        // swiftlint:enable trailing_closure
 
         // When
         // After initialized
@@ -48,17 +50,19 @@ final class ForecastViewModelTests: XCTestCase {
     func testReloadFailure() {
         // Given
         let now = Date.now
+        // swiftlint:disable trailing_closure
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeatherCondition: unimplemented(),
                 fetchThrowingWeatherCondition: unimplemented(),
-                fetchThrowingWeather: { _, date in
+                fetchThrowingWeather: { _, _ in
                     throw YumemiWeatherError.unknownError
                 }
             )
         } operation: {
             ForecastViewModel()
         }
+        // swiftlint:enable trailing_closure
 
         // When
         // After initialized

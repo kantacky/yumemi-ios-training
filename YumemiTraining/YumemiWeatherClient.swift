@@ -34,9 +34,12 @@ extension YumemiWeatherClient: DependencyKey {
             WeatherCondition(rawValue: try YumemiWeather.fetchWeatherCondition(at: area))
         },
         fetchThrowingWeather: { area, date in
+            @Dependency(Encoder.self) var weatherEncoder
+            @Dependency(Decoder.self) var weatherDecoder
+
             let request = WeatherRequest(area: area, date: date)
-            let response = try YumemiWeather.fetchWeather(try request.encode())
-            return try Weather.decode(from: response)
+            let response = try YumemiWeather.fetchWeather(try weatherEncoder.encodeWeatherRequest(request))
+            return try weatherDecoder.decodeWeatherResponse(response)
         }
     )
 }
