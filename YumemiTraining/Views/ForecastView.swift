@@ -16,24 +16,18 @@ struct ForecastView: View {
         ZStack {
             VStack(spacing: 80) {
                 VStack {
-                    Group {
-                        if let weather = viewModel.weather {
-                            weather.weatherCondition.image
-                                .scaledToFit()
-                        } else {
-                            Color.clear
-                        }
-                    }
-                    .aspectRatio(1, contentMode: .fit)
-                    .containerRelativeFrame(
-                        .horizontal,
-                        count: 2,
-                        spacing: .zero
-                    )
+                    viewModel.weather.info.weatherCondition.image
+                        .scaledToFit()
+                        .aspectRatio(1, contentMode: .fit)
+                        .containerRelativeFrame(
+                            .horizontal,
+                            count: 2,
+                            spacing: .zero
+                        )
 
                     TemperatureView(
-                        maxTemperature: viewModel.weather?.maxTemperature,
-                        minTemperature: viewModel.weather?.minTemperature
+                        maxTemperature: viewModel.weather.info.maxTemperature,
+                        minTemperature: viewModel.weather.info.minTemperature
                     )
                 }
 
@@ -48,6 +42,7 @@ struct ForecastView: View {
                         )
 
                     Button("Reload", action: reload)
+                        .disabled(viewModel.isLoading)
                         .containerRelativeFrame(
                             .horizontal,
                             count: 4,
@@ -63,15 +58,13 @@ struct ForecastView: View {
                     .offset(y: 100)
             }
         }
-        .task { await reload() }
         .alert(
             "There was an Error Retrieving Weather.",
-            isPresented: $viewModel.isAlertPresented
-        ) {} message: {
-            if let message = viewModel.alertMessage {
-                Text(message)
-            }
-        }
+            isPresented: $viewModel.isAlertPresented,
+            presenting: viewModel.alertMessage,
+            actions: { _ in },
+            message: Text.init
+        )
         .onChange(of: scenePhase) { oldValue, newValue in
             switch (oldValue, newValue) {
             case (.background, .inactive):
@@ -97,10 +90,22 @@ private extension ForecastView {
     }
 
     func reload() async {
-        await viewModel.reload(at: "tokyo", date: .now)
+        await viewModel.reload(date: .now)
     }
 }
 
 #Preview {
-    ForecastView(viewModel: ForecastViewModel())
+    ForecastView(
+        viewModel: ForecastViewModel(
+            weather: Weather(
+                area: "Tokyo",
+                info: WeatherInfo(
+                    date: .now,
+                    weatherCondition: .sunny,
+                    maxTemperature: 20,
+                    minTemperature: -10
+                )
+            )
+        )
+    )
 }

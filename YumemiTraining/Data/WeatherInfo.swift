@@ -1,5 +1,5 @@
 //
-//  Weather.swift
+//  WeatherInfo.swift
 //  YumemiTraining
 //
 //  Created by 及川 寛太 on 2024/02/16.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Weather: Equatable, Decodable {
+struct WeatherInfo: Equatable, Decodable, Hashable {
     let date: Date
     let weatherCondition: WeatherCondition
     let maxTemperature: Int

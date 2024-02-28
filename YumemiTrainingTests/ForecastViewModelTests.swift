@@ -12,30 +12,48 @@ import YumemiWeather
 
 @MainActor
 final class ForecastViewModelTests: XCTestCase {
-    func testReloadSunny() async throws {
+    func testReload() async throws {
         // Given
         let now = Date.now
-        let expected = Weather(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
+        let initialWeather = Weather(
+            area: "Tokyo",
+            info: WeatherInfo(
+                date: now,
+                weatherCondition: .cloudy,
+                maxTemperature: 10,
+                minTemperature: -10
+            )
+        )
+        let expected = Weather(
+            area: "Tokyo",
+            info: WeatherInfo(
+                date: now,
+                weatherCondition: .sunny,
+                maxTemperature: 20,
+                minTemperature: 0
+            )
+        )
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeather: { _, date in
-                    Weather(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
-                }
+                    WeatherInfo(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
+                },
+                fetchWeatherList: unimplemented()
             )
         } operation: {
-            ForecastViewModel()
+            ForecastViewModel(weather: initialWeather)
         }
 
         // When
         // After initialized
 
         // Then
-        XCTAssertNil(viewModel.weather)
+        XCTAssertEqual(viewModel.weather, initialWeather)
         XCTAssertNil(viewModel.alertMessage)
         XCTAssertFalse(viewModel.isAlertPresented)
 
         // When
-        await viewModel.reload(at: "Tokyo", date: now)
+        await viewModel.reload(date: now)
 
         // Then
         XCTAssertEqual(viewModel.weather, expected)
@@ -46,29 +64,39 @@ final class ForecastViewModelTests: XCTestCase {
     func testReloadFailure() async throws {
         // Given
         let now = Date.now
+        let initialWeather = Weather(
+            area: "Tokyo",
+            info: WeatherInfo(
+                date: now,
+                weatherCondition: .cloudy,
+                maxTemperature: 10,
+                minTemperature: -10
+            )
+        )
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
                 fetchWeather: { _, _ in
                     throw YumemiWeatherError.unknownError
-                }
+                },
+                fetchWeatherList: unimplemented()
             )
         } operation: {
-            ForecastViewModel()
+            ForecastViewModel(weather: initialWeather)
         }
 
         // When
         // After initialized
 
         // Then
-        XCTAssertNil(viewModel.weather)
+        XCTAssertEqual(viewModel.weather, initialWeather)
         XCTAssertNil(viewModel.alertMessage)
         XCTAssertFalse(viewModel.isAlertPresented)
 
         // When
-        await viewModel.reload(at: "Tokyo", date: now)
+        await viewModel.reload(date: now)
 
         // Then
-        XCTAssertNil(viewModel.weather)
+        XCTAssertEqual(viewModel.weather, initialWeather)
         XCTAssertEqual(viewModel.alertMessage, "Unknown error has occurred.")
         XCTAssertTrue(viewModel.isAlertPresented)
 

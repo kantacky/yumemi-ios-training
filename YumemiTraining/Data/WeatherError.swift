@@ -17,7 +17,7 @@ enum WeatherError: LocalizedError {
             return "Failed to decode response"
 
         case .encodeRequestError:
-            return "Failed to encode response"
+            return "Failed to encode request"
         }
     }
 }
