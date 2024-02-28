@@ -11,8 +11,6 @@ struct ForecastView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dismiss) private var dismiss
     @Bindable var viewModel: ForecastViewModel
-    @State private var weatherCardSize = CGSize.zero
-    @State private var buttonsSize = CGSize.zero
 
     var body: some View {
         ZStack {
