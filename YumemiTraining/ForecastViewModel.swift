@@ -11,16 +11,13 @@ import YumemiWeather
 
 @MainActor
 @Observable final class ForecastViewModel {
-    @ObservationIgnored @Dependency(YumemiWeatherClient.self) var weatherClient
+    @ObservationIgnored @Dependency(YumemiWeatherClient.self) private var weatherClient
     private(set) var weather: Weather?
     private(set) var isLoading = false
     private(set) var alertMessage: String?
     var isAlertPresented: Bool {
-        get {
-            alertMessage != nil
-        }
-
-        set(newValue) {
+        get { alertMessage != nil }
+        set {
             if newValue == false {
                 alertMessage = nil
             }
