@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct ForecastView<ViewModel: ForecastViewModel>: View {
+struct ForecastView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel: ViewModel
-    @State private var buttonsSize: CGSize = .zero
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject var viewModel: ForecastViewModel
+    @State private var buttonsSize = CGSize.zero
 
     var body: some View {
-        VStack(spacing: .init(80)) {
+        VStack(spacing: 80) {
             VStack {
                 Group {
-                    if let weather = self.viewModel.weather {
+                    if let weather = viewModel.weather {
                         weather.weatherCondition.image
                             .scaledToFit()
                     } else {
@@ -39,8 +39,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
 
             HStack(spacing: 0) {
                 Button {
-                    // Close Action
-                    self.dismiss()
+                    dismiss()
                 } label: {
                     Text("Close")
                 }
@@ -53,7 +52,7 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 )
 
                 Button {
-                    self.viewModel.reload()
+                    viewModel.reload(at: "tokyo", date: .now)
                 } label: {
                     Text("Reload")
                 }
@@ -66,12 +65,12 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 )
             }
             .readSize { size in
-                self.buttonsSize = size
+                buttonsSize = size
             }
         }
-        .offset(.init(width: 0, height: (self.buttonsSize.height + 80) / 2))
+        .offset(.init(width: 0, height: (buttonsSize.height + 80) / 2))
         .onAppear {
-            viewModel.reload()
+            viewModel.reload(at: "tokyo", date: .now)
         }
         .alert(
             "There was an Error Retrieving Weather.",
@@ -81,24 +80,25 @@ struct ForecastView<ViewModel: ForecastViewModel>: View {
                 Text(message)
             }
         }
-        .onChange(of: self.scenePhase, { oldValue, newValue in
+        .onChange(of: scenePhase) { oldValue, newValue in
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
-                viewModel.reload()
+                viewModel.reload(at: "tokyo", date: .now)
 
             default:
                 return
             }
-        })
-//        .onReceive(NotificationCenter.default.publisher(
-//            for: UIApplication.willEnterForegroundNotification
-//        )) { _ in
-//            self.viewModel.reload()
-//        }
+        }
+        // MARK: Alternative
+        // .onReceive(NotificationCenter.default.publisher(
+        //     for: UIApplication.willEnterForegroundNotification
+        // )) { _ in
+        //     viewModel.reload()
+        // }
     }
 }
 
 #Preview {
-    ForecastView(viewModel: ForecastViewModelImpl())
+    ForecastView(viewModel: ForecastViewModel())
 }

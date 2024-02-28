@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F048A2822B82F99B008115FA /* ForecastViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */; };
 		F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */; };
 		F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB4B2B7F09D400A8E86F /* ForecastView.swift */; };
 		F072BB4E2B7F09D500A8E86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F072BB4D2B7F09D500A8E86F /* Assets.xcassets */; };
@@ -14,14 +15,33 @@
 		F072BB592B7F0A8900A8E86F /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = F072BB582B7F0A8900A8E86F /* YumemiWeather */; };
 		F072BB5B2B7F2B9600A8E86F /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB5A2B7F2B9600A8E86F /* ForecastViewModel.swift */; };
 		F072BB5D2B7F2C9300A8E86F /* WeatherCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB5C2B7F2C9300A8E86F /* WeatherCondition.swift */; };
-		F072BB612B7F496500A8E86F /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB602B7F496500A8E86F /* View+.swift */; };
+		F072BB612B7F496500A8E86F /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB602B7F496500A8E86F /* View+Extension.swift */; };
 		F072BB632B7F49F300A8E86F /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */; };
 		F072BB652B7F569200A8E86F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB642B7F569200A8E86F /* Weather.swift */; };
-		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
 		F072BB6B2B7F848600A8E86F /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072BB6A2B7F848600A8E86F /* NewView.swift */; };
+		F0AEFC022B8447E90090F669 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = F0AEFC012B8447E90090F669 /* Dependencies */; };
+		F0AEFC042B8448B80090F669 /* YumemiWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC032B8448B80090F669 /* YumemiWeatherClient.swift */; };
+		F0AEFC062B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC052B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift */; };
+		F0AEFC142B8492880090F669 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC132B8492880090F669 /* WeatherRequest.swift */; };
+		F0AEFC162B8492990090F669 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC152B8492990090F669 /* WeatherError.swift */; };
+		F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEFC302B85E2270090F669 /* TemperatureView.swift */; };
+		F0D6E0AC2B8D85A700FD587E /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D6E0AB2B8D85A700FD587E /* Encoder.swift */; };
+		F0D6E0AE2B8D864700FD587E /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D6E0AD2B8D864700FD587E /* Decoder.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F048A26D2B82F7A9008115FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F072BB3E2B7F09D400A8E86F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F072BB452B7F09D400A8E86F;
+			remoteInfo = YumemiTraining;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		F048A2692B82F7A9008115FA /* YumemiTrainingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumemiTrainingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModelTests.swift; sourceTree = "<group>"; };
 		F072BB462B7F09D400A8E86F /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F072BB492B7F09D400A8E86F /* YumemiTrainingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTrainingApp.swift; sourceTree = "<group>"; };
 		F072BB4B2B7F09D400A8E86F /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
@@ -29,29 +49,52 @@
 		F072BB502B7F09D500A8E86F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F072BB5A2B7F2B9600A8E86F /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
 		F072BB5C2B7F2C9300A8E86F /* WeatherCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCondition.swift; sourceTree = "<group>"; };
-		F072BB602B7F496500A8E86F /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		F072BB602B7F496500A8E86F /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
 		F072BB642B7F569200A8E86F /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		F0AEFC302B85E2270090F669 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		F072BB6A2B7F848600A8E86F /* NewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewView.swift; sourceTree = "<group>"; };
+		F0AEFC032B8448B80090F669 /* YumemiWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiWeatherClient.swift; sourceTree = "<group>"; };
+		F0AEFC052B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YumemiWeatherError+LocalizedError.swift"; sourceTree = "<group>"; };
+		F0AEFC132B8492880090F669 /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
+		F0AEFC152B8492990090F669 /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
+		F0AEFC302B85E2270090F669 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
+		F0D6E0AB2B8D85A700FD587E /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		F0D6E0AD2B8D864700FD587E /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F048A2662B82F7A9008115FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F072BB432B7F09D400A8E86F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F072BB592B7F0A8900A8E86F /* YumemiWeather in Frameworks */,
+				F0AEFC022B8447E90090F669 /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F048A26A2B82F7A9008115FA /* YumemiTrainingTests */ = {
+			isa = PBXGroup;
+			children = (
+				F048A2812B82F99B008115FA /* ForecastViewModelTests.swift */,
+			);
+			path = YumemiTrainingTests;
+			sourceTree = "<group>";
+		};
 		F072BB3D2B7F09D400A8E86F = {
 			isa = PBXGroup;
 			children = (
 				F072BB482B7F09D400A8E86F /* YumemiTraining */,
+				F048A26A2B82F7A9008115FA /* YumemiTrainingTests */,
 				F072BB472B7F09D400A8E86F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				F072BB462B7F09D400A8E86F /* YumemiTraining.app */,
+				F048A2692B82F7A9008115FA /* YumemiTrainingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,10 +115,16 @@
 				F072BB6A2B7F848600A8E86F /* NewView.swift */,
 				F072BB4B2B7F09D400A8E86F /* ForecastView.swift */,
 				F0AEFC302B85E2270090F669 /* TemperatureView.swift */,
-				F072BB602B7F496500A8E86F /* View+.swift */,
+				F072BB602B7F496500A8E86F /* View+Extension.swift */,
 				F072BB622B7F49F300A8E86F /* SizePreferenceKey.swift */,
 				F072BB5A2B7F2B9600A8E86F /* ForecastViewModel.swift */,
+				F0AEFC052B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift */,
+				F0AEFC032B8448B80090F669 /* YumemiWeatherClient.swift */,
+				F0D6E0AB2B8D85A700FD587E /* Encoder.swift */,
+				F0D6E0AD2B8D864700FD587E /* Decoder.swift */,
 				F072BB642B7F569200A8E86F /* Weather.swift */,
+				F0AEFC132B8492880090F669 /* WeatherRequest.swift */,
+				F0AEFC152B8492990090F669 /* WeatherError.swift */,
 				F072BB5C2B7F2C9300A8E86F /* WeatherCondition.swift */,
 				F072BB4D2B7F09D500A8E86F /* Assets.xcassets */,
 				F072BB4F2B7F09D500A8E86F /* Preview Content */,
@@ -93,6 +143,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F048A2682B82F7A9008115FA /* YumemiTrainingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F048A2712B82F7A9008115FA /* Build configuration list for PBXNativeTarget "YumemiTrainingTests" */;
+			buildPhases = (
+				F048A2652B82F7A9008115FA /* Sources */,
+				F048A2662B82F7A9008115FA /* Frameworks */,
+				F048A2672B82F7A9008115FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0AEFC102B848CF10090F669 /* PBXTargetDependency */,
+				F048A26E2B82F7A9008115FA /* PBXTargetDependency */,
+			);
+			name = YumemiTrainingTests;
+			packageProductDependencies = (
+			);
+			productName = YumemiTrainingTests;
+			productReference = F048A2692B82F7A9008115FA /* YumemiTrainingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F072BB452B7F09D400A8E86F /* YumemiTraining */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F072BB542B7F09D500A8E86F /* Build configuration list for PBXNativeTarget "YumemiTraining" */;
@@ -104,10 +175,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				F0AEFC0E2B848CEA0090F669 /* PBXTargetDependency */,
 			);
 			name = YumemiTraining;
 			packageProductDependencies = (
 				F072BB582B7F0A8900A8E86F /* YumemiWeather */,
+				F0AEFC012B8447E90090F669 /* Dependencies */,
 			);
 			productName = YumemiTraining;
 			productReference = F072BB462B7F09D400A8E86F /* YumemiTraining.app */;
@@ -123,6 +196,10 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					F048A2682B82F7A9008115FA = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = F072BB452B7F09D400A8E86F;
+					};
 					F072BB452B7F09D400A8E86F = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -139,17 +216,27 @@
 			mainGroup = F072BB3D2B7F09D400A8E86F;
 			packageReferences = (
 				F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */,
+				F0AEFC002B8447E90090F669 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				F0AEFC0A2B848CD80090F669 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = F072BB472B7F09D400A8E86F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F072BB452B7F09D400A8E86F /* YumemiTraining */,
+				F048A2682B82F7A9008115FA /* YumemiTrainingTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F048A2672B82F7A9008115FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F072BB442B7F09D400A8E86F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,11 +249,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F048A2652B82F7A9008115FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F048A2822B82F99B008115FA /* ForecastViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F072BB422B7F09D400A8E86F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F072BB612B7F496500A8E86F /* View+.swift in Sources */,
+				F0AEFC142B8492880090F669 /* WeatherRequest.swift in Sources */,
+				F072BB612B7F496500A8E86F /* View+Extension.swift in Sources */,
+				F0AEFC062B844DC30090F669 /* YumemiWeatherError+LocalizedError.swift in Sources */,
 				F072BB5D2B7F2C9300A8E86F /* WeatherCondition.swift in Sources */,
 				F072BB5B2B7F2B9600A8E86F /* ForecastViewModel.swift in Sources */,
 				F072BB4C2B7F09D400A8E86F /* ForecastView.swift in Sources */,
@@ -174,13 +271,69 @@
 				F072BB4A2B7F09D400A8E86F /* YumemiTrainingApp.swift in Sources */,
 				F0AEFC312B85E2270090F669 /* TemperatureView.swift in Sources */,
 				F072BB632B7F49F300A8E86F /* SizePreferenceKey.swift in Sources */,
+				F0AEFC162B8492990090F669 /* WeatherError.swift in Sources */,
+				F0D6E0AC2B8D85A700FD587E /* Encoder.swift in Sources */,
+				F0D6E0AE2B8D864700FD587E /* Decoder.swift in Sources */,
+				F0AEFC042B8448B80090F669 /* YumemiWeatherClient.swift in Sources */,
 				F072BB652B7F569200A8E86F /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F048A26E2B82F7A9008115FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F072BB452B7F09D400A8E86F /* YumemiTraining */;
+			targetProxy = F048A26D2B82F7A9008115FA /* PBXContainerItemProxy */;
+		};
+		F0AEFC0E2B848CEA0090F669 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = F0AEFC0D2B848CEA0090F669 /* SwiftLintPlugin */;
+		};
+		F0AEFC102B848CF10090F669 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = F0AEFC0F2B848CF10090F669 /* SwiftLintPlugin */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F048A26F2B82F7A9008115FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4YP7SQBLYV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kantacky.YumemiTrainingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YumemiTraining.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YumemiTraining";
+			};
+			name = Debug;
+		};
+		F048A2702B82F7A9008115FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4YP7SQBLYV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kantacky.YumemiTrainingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YumemiTraining.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YumemiTraining";
+			};
+			name = Release;
+		};
 		F072BB522B7F09D500A8E86F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -361,6 +514,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F048A2712B82F7A9008115FA /* Build configuration list for PBXNativeTarget "YumemiTrainingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F048A26F2B82F7A9008115FA /* Debug */,
+				F048A2702B82F7A9008115FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F072BB412B7F09D400A8E86F /* Build configuration list for PBXProject "YumemiTraining" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -390,6 +552,22 @@
 				kind = branch;
 			};
 		};
+		F0AEFC002B8447E90090F669 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+		F0AEFC0A2B848CD80090F669 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -397,6 +575,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F072BB572B7F0A8900A8E86F /* XCRemoteSwiftPackageReference "ios-training" */;
 			productName = YumemiWeather;
+		};
+		F0AEFC012B8447E90090F669 /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0AEFC002B8447E90090F669 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+		F0AEFC0D2B848CEA0090F669 /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0AEFC0A2B848CD80090F669 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
+		};
+		F0AEFC0F2B848CF10090F669 /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0AEFC0A2B848CD80090F669 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

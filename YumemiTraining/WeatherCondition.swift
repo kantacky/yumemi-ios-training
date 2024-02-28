@@ -9,22 +9,22 @@ import Foundation
 import SwiftUI
 
 enum WeatherCondition: String, Decodable {
-    case sunny
     case cloudy
     case rainy
-    
+    case sunny
+
     var image: some View {
         switch self {
         case .sunny:
             return Image(.sunny)
                 .resizable()
                 .foregroundStyle(.red)
-            
+
         case .cloudy:
             return Image(.cloudy)
                 .resizable()
                 .foregroundStyle(.gray)
-            
+
         case .rainy:
             return Image(.rainy)
                 .resizable()

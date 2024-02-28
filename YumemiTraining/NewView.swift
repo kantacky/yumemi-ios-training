@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct NewView: View {
-    @State var isPresented: Bool = false
+    @State private var isPresented = true
 
     var body: some View {
         EmptyView()
-            .onAppear {
-                self.isPresented = true
-            }
             .fullScreenCover(isPresented: $isPresented) {
                 ForecastView(
-                    viewModel: ForecastViewModelImpl()
+                    viewModel: ForecastViewModel()
                 )
                 .onDisappear {
-                    self.isPresented = true
+                    isPresented = true
                 }
             }
     }
