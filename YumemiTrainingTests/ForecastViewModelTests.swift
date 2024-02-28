@@ -12,23 +12,19 @@ import YumemiWeather
 
 @MainActor
 final class ForecastViewModelTests: XCTestCase {
-    func testReloadSunny() {
+    func testReloadSunny() async throws {
         // Given
         let now = Date.now
         let expected = Weather(date: now, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
-        // swiftlint:disable trailing_closure
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
-                fetchWeatherCondition: unimplemented(),
-                fetchThrowingWeatherCondition: unimplemented(),
-                fetchThrowingWeather: { _, date in
+                fetchWeather: { _, date in
                     Weather(date: date, weatherCondition: .sunny, maxTemperature: 20, minTemperature: 0)
                 }
             )
         } operation: {
             ForecastViewModel()
         }
-        // swiftlint:enable trailing_closure
 
         // When
         // After initialized
@@ -39,7 +35,7 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isAlertPresented)
 
         // When
-        viewModel.reload(at: "Tokyo", date: now)
+        await viewModel.reload(at: "Tokyo", date: now)
 
         // Then
         XCTAssertEqual(viewModel.weather, expected)
@@ -47,22 +43,18 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isAlertPresented)
     }
 
-    func testReloadFailure() {
+    func testReloadFailure() async throws {
         // Given
         let now = Date.now
-        // swiftlint:disable trailing_closure
         let viewModel = withDependencies {
             $0[YumemiWeatherClient.self] = YumemiWeatherClient(
-                fetchWeatherCondition: unimplemented(),
-                fetchThrowingWeatherCondition: unimplemented(),
-                fetchThrowingWeather: { _, _ in
+                fetchWeather: { _, _ in
                     throw YumemiWeatherError.unknownError
                 }
             )
         } operation: {
             ForecastViewModel()
         }
-        // swiftlint:enable trailing_closure
 
         // When
         // After initialized
@@ -73,7 +65,7 @@ final class ForecastViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isAlertPresented)
 
         // When
-        viewModel.reload(at: "Tokyo", date: now)
+        await viewModel.reload(at: "Tokyo", date: now)
 
         // Then
         XCTAssertNil(viewModel.weather)
