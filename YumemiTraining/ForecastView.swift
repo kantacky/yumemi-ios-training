@@ -40,31 +40,23 @@ struct ForecastView: View {
                 }
 
                 HStack(spacing: 0) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Close")
-                    }
-                    .containerRelativeFrame(
-                        .horizontal,
-                        count: 4,
-                        span: 1,
-                        spacing: .zero,
-                        alignment: .center
-                    )
+                    Button("Close", action: dismiss.callAsFunction)
+                        .containerRelativeFrame(
+                            .horizontal,
+                            count: 4,
+                            span: 1,
+                            spacing: .zero,
+                            alignment: .center
+                        )
 
-                    Button {
-                        Task { await viewModel.reload(at: "tokyo", date: .now) }
-                    } label: {
-                        Text("Reload")
-                    }
-                    .containerRelativeFrame(
-                        .horizontal,
-                        count: 4,
-                        span: 1,
-                        spacing: .zero,
-                        alignment: .center
-                    )
+                    Button("Reload", action: reload)
+                        .containerRelativeFrame(
+                            .horizontal,
+                            count: 4,
+                            span: 1,
+                            spacing: .zero,
+                            alignment: .center
+                        )
                 }
             }
 
@@ -73,7 +65,7 @@ struct ForecastView: View {
                     .offset(y: 100)
             }
         }
-        .task { await viewModel.reload(at: "tokyo", date: .now) }
+        .task { await reload() }
         .alert(
             "There was an Error Retrieving Weather.",
             isPresented: $viewModel.isAlertPresented
@@ -86,7 +78,7 @@ struct ForecastView: View {
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
-                Task { await viewModel.reload(at: "tokyo", date: .now) }
+                reload()
 
             default:
                 return
@@ -98,6 +90,16 @@ struct ForecastView: View {
         // )) { _ in
         //     viewModel.reload()
         // }
+    }
+}
+
+private extension ForecastView {
+    func reload() {
+        Task { await reload() }
+    }
+
+    func reload() async {
+        await viewModel.reload(at: "tokyo", date: .now)
     }
 }
 
