@@ -46,7 +46,7 @@ struct WeatherListView: View {
                     ForecastView(viewModel: ForecastViewModel(weather: weather))
                         .navigationTitle(weather.area)
                 }
-                .refreshable { await viewModel.reload(date: .now) }
+                .refreshable { await reload() }
             }
         }
         .alert(
@@ -61,12 +61,22 @@ struct WeatherListView: View {
             switch (oldValue, newValue) {
             case (.background, .inactive):
                 viewModel.isAlertPresented = false
-                Task { await viewModel.reload(date: .now) }
+                reload()
 
             default:
                 return
             }
         }
+    }
+}
+
+private extension WeatherListView {
+    func reload() {
+        Task { await reload() }
+    }
+
+    func reload() async {
+        await viewModel.reload(date: .now)
     }
 }
 
